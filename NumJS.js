@@ -32,14 +32,21 @@ function check_all_dimensions_same(firstArray, secondArray) {
   }
 }
 
-function add_two_array(data_array, to_add, to_store) {
-  for (i in data_array) {
-    if (typeof(data_array[i]) == 'number') {
-      to_store[i] = data_array[i] + to_add[i];
-    } else if (typeof(data_array[i] == 'object')) {
-      add_two_array(data_array[i], to_add[i], to_store[i]);
+
+
+function add_two_array(data_array, to_add) {
+  function inner_add(data_array, to_add, to_store) {
+    for (i in data_array) {
+      if (typeof(data_array[i]) == 'number') {
+        to_store[i] = data_array[i] + to_add[i];
+      } else if (typeof(data_array[i] == 'object')) {
+        inner_add(data_array[i], to_add[i], to_store[i]);
+      }
     }
   }
+  var newdata = data_array.slice();
+  inner_add(data_array, to_add, newdata);
+  return newdata;
 }
 
 function add_number_and_array(data_array, to_add, to_store) {
@@ -54,12 +61,46 @@ function add_number_and_array(data_array, to_add, to_store) {
   return to_store;
 }
 
-function add_nonEqual_array(data_array, to_add, to_store) {
-  if (data_array.length == to_add.length) {
-    //column wise addition dude you need
 
+function add_nonEqual_array(data_array, to_add, to_store) {
+  var data_dimension = get_Dimensions(data_array);
+  var to_add_dimension = get_Dimensions(to_add);
+  var subset_data_dimension = data_dimension.slice(data_array.length - to_add.length);
+
+  function isInnerDimensionSame() {
+    for (var i in to_add_dimension) {
+      if (to_add[i] != subset_data_dimension[i]) {
+        return false;
+      }
+    }
+    return true;
   }
+
+  if (isInnerDimensionSame()) {
+    res = new_add(data_array, to_add);
+  } else {
+    
+  }
+
 }
+
+function new_add(data_array, to_add) {
+  function temp_add(data_array, to_add, to_store, i = 0) {
+    if (i < data_array.length) {
+      if (check_all_dimensions_same(data_array, to_add)) {
+        to_store[i] = add_two_array(data_array, to_add);
+      } else {
+        for (j in data_array) {
+          temp_add(data_array[j], to_add, j);
+        }
+      }
+    }
+  }
+  var newdata = data_array.slice();
+  temp_add(data_array, to_add, newdata);
+  return newdata;
+}
+
 
 function inner_add(data_array, to_add, to_store) {
   if (typeof(to_add) == 'number') {
@@ -111,32 +152,59 @@ var e = [
 var c = [
   [1],
   [2],
-  [3]
+  [3],
+  [4]
 ];
-var res = b.slice();
-console.log(b);
-console.log(add_two_array(b, e, res));
-console.log(res);
+
+var d = [
+  // (3,4,5)
+  [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+  ],
+  [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+  ],
+  [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+  ]
+]
+
+// console.log(add_two_array(b,e));
+console.log(new_add(b, e));
+
+// var res = b.slice();
+// console.log(b);
+// console.log(add_two_array(b, e, res));
+// console.log(res);
 /*
 var d = [
-  // (3,4,4)
+  // (3,4,5)
   [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0]
   ],
   [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0]
   ],
   [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0],
+    [0, 0, 0, 0,0]
   ]
 ]
 */
