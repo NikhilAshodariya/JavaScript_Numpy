@@ -17,10 +17,7 @@ function get_Dimensions(data) {
 function check_all_dimensions_same(firstArray, secondArray) {
   var firstSize = get_Dimensions(firstArray);
   var secondSize = get_Dimensions(secondArray);
-  // console.log(firstSize);
-  // console.log(secondSize);
   if (firstSize.length != secondSize.length) {
-    // console.log("in if loop");
     return false;
   } else {
     for (var i = 0; i < firstArray.length; i++) {
@@ -42,12 +39,15 @@ function add_two_array(data_array, to_add) {
       }
     }
   }
-  var newdata = data_array.slice();
-  inner_add(data_array, to_add, newdata);
-  return newdata;
+  inner_add(data_array, to_add, data_array);
+  return data_array;
 }
 
 function add_number_and_array(data_array, to_add) {
+  // console.log("in add number and array");
+  // console.log(data_array);
+  // console.log(to_add);
+
   function inner_add_number_and_array(data_array, to_add, to_store) {
     for (i in data_array) {
       if (typeof(data_array[i]) == 'object') {
@@ -59,9 +59,9 @@ function add_number_and_array(data_array, to_add) {
     }
     return to_store;
   }
-  var newdata = data_array.slice();
-  inner_add_number_and_array(data_array, to_add, newdata);
-  return newdata;
+  // var newdata = data_array.slice();
+  inner_add_number_and_array(data_array, to_add, data_array);
+  return data_array;
 }
 
 function add_nonEqual_array(data_array, to_add) {
@@ -82,32 +82,42 @@ function add_nonEqual_array(data_array, to_add) {
     if (isInnerDimensionSame()) {
       res = new_add(data_array, to_add);
     } else {
-      if (data_dimension[a.length - 2] == to_add_dimension[0]) {
+      if (data_dimension[data_dimension.length - 2] == to_add_dimension[0]) {
         add_to_column(data_array, to_add);
-      } else if (data_dimension[a.length - 1] == to_add_dimension[1]) {
+      } else if (data_dimension[data_dimension.length - 1] == to_add_dimension[1]) {
         add_to_row(data_array, to_add);
       } else {
         throw new Error("Cannot compute the request Sorry");
       }
     }
   }
-  var newdata = data_array.slice();
-  temp_add_nonEqual_array(data_array, to_add, newdata);
-  return newdata;
+  // var newdata = data_array.slice();
+  temp_add_nonEqual_array(data_array, to_add, data_array);
+  return data_array;
 }
-
 
 function add_to_column(data_array, to_add) {
   function temp_add(data_array, to_add, to_store, i = 0) {
-    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+    if (typeof(data_array[0]) == 'number') {
+      for (k in data_array) {
+        to_store[k] = data_array[k] + to_add[i][0];
+      }
+    } else if (typeof(data_array[i] == 'object')) {
+      for (y in data_array) {
+        temp_add(data_array[y], to_add, to_store[y], y);
+      }
+    }
   }
+  // var newdata = data_array.slice();
+  temp_add(data_array, to_add, data_array);
+  return data_array;
 }
 
 function add_to_row(data_array, to_add) {
   function temp_add(data_array, to_add, to_store, i = 0) {
     if (get_Dimensions(data_array).length == 1) {
       for (j in data_array) {
-        to_store[j] = data_array[j] + to_add[j];
+        to_store[j] = data_array[j] + to_add[0];
       }
     } else {
       for (k in data_array) {
@@ -115,9 +125,9 @@ function add_to_row(data_array, to_add) {
       }
     }
   }
-  var newdata = data_array.slice();
-  temp_add(data_array, to_add, newdata);
-  return newdata;
+  // var newdata = data_array.slice();
+  temp_add(data_array, to_add, data_array);
+  return data_array;
 
 }
 
@@ -133,16 +143,18 @@ function new_add(data_array, to_add) {
       }
     }
   }
-  var newdata = data_array.slice();
-  temp_add(data_array, to_add, newdata);
-  return newdata;
+  // var newdata = data_array.slice();
+  temp_add(data_array, to_add, data_array);
+  return data_array;
 }
-
-
 
 function inner_add(data_array, to_add) {
   function temp_inner_add(data_array, to_add, to_store) {
+    console.log("in temp inner add");
+    console.log(typeof [to_add]);
+
     if (typeof(to_add) == 'number') {
+      // console.log("in inner add if");
       return add_number_and_array(data_array, to_add, to_store);
     } else if (typeof(to_add) == 'object') {
       if (check_all_dimensions_same(data_array, to_add)) {
@@ -153,23 +165,13 @@ function inner_add(data_array, to_add) {
       }
     }
   }
-  var newdata = data_array.slice();
-  temp_inner_add(data_array, to_add, newdata);
-  return newdata;
+  // var newdata = data_array.slice();
+  temp_inner_add(data_array, to_add, data_array);
+  return data_array;
 }
 
-
-
-function add(data_array, to_add, can_replace) {
-  var newdata;
-  if (can_replace == false) {
-    newdata = data_array.slice();
-  } else if (can_replace == true) {
-    newdata = data_array;
-  } else {
-    newdata = data_array.slice();
-  }
-  return inner_add(data_array, to_add, newdata);
+function add(data_array, to_add) {
+  return inner_add(data_array, to_add);
 }
 
 // var a = [1, 2, 3, 4, 5];
@@ -217,10 +219,13 @@ var d = [
   ]
 ]
 
+
 // console.log(add_two_array(b,e));
-console.log(b);
+// console.log(b);
 console.log("-----------------------");
-console.log(add_to_row(d, [1, 2, 3]));
+a = [1];
+console.log();
+// console.log(a);
 
 // var res = b.slice();
 // console.log(b);
