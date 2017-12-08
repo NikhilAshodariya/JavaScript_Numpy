@@ -18,7 +18,11 @@ var addOperator =
         if (typeof(data_array[i]) == 'object') {
           data_array[i] = add_number_and_array(data_array[i], to_add);
         } else {
-          data_array[i] = data_array[i] + to_add;
+          if (basicFunc.get_Dimensions(to_add).length == 1) {
+            data_array[i] = data_array[i] + to_add[0];
+          } else {
+            data_array[i] = data_array[i] + to_add;
+          }
         }
       }
       return data_array;
@@ -94,7 +98,7 @@ var addOperator =
     }
 
     function inner_add(data_array, to_add) {
-      if (typeof(to_add) == 'number') {
+      if (typeof(to_add) == 'number' || (basicFunc.get_Dimensions(to_add) == 1)) {
         return add_number_and_array(data_array, to_add);
       } else if (typeof(to_add) == 'object') {
         if (basicFunc.are_dimensions_same(data_array, to_add)) {
