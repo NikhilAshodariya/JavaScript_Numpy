@@ -75,3 +75,11 @@ var e = [
 
 res = adder.add(e, [1, 2, 3]);
 console.log(res[1]);
+
+/*
+ * if we add true in add parameter then the function will modify the given data itself and will return only one value
+ * that is the actual calculated value
+ */
+
+res1 = adder.add(e, [1, 2, 3], true);
+console.log(res1);
