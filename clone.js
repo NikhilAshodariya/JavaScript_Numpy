@@ -15,7 +15,7 @@ var deepClone =
         } else {
           for (i in data) {
             // console.log('in loop fo for');
-            console.log(`i = ${i}`);
+            // console.log(`i = ${i}`);
             to_store[i] = []
             to_store[i] = inner_deepCloneObject(data[i], to_store[i]);
           }
