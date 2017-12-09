@@ -66,20 +66,23 @@ var e = [
   ]
 ]
 
+// [ [ 2, 4, 10 ], [ 5, 7, 13 ], [ 8, 10, 16 ], [ 6, 4, 8 ] ]
+// [ [ 2, 4, 10 ], [ 5, 7, 13 ], [ 8, 10, 16 ], [ 6, 4, 8 ] ]
 
 
 /*
  * Position zero has the original data.
  * Position one has a calculated data.
  */
+res = adder.add(b,c);
+console.log("-------Printing first result----------------");
+console.log(res);
+console.log("-------Printing array b----------------------");
+console.log(b);
 
-res = adder.add(e, [1, 2, 3]);
-console.log(res[1]);
 
-/*
- * if we add true in add parameter then the function will modify the given data itself and will return only one value
- * that is the actual calculated value
- */
-
-res1 = adder.add(e, [1, 2, 3], true);
+res1 = adder.add(b,c,true);
+console.log("-------Printing second result----------------");
 console.log(res1);
+console.log("-------Printing array b----------------------");
+console.log(b);

@@ -30,9 +30,30 @@ var basicOperations =
         return true;
       }
     }
+
+    function is_first_greater(first_array, second_array) {
+      first_array_dimension = get_Dimensions(first_array);
+      second_array_dimension = get_Dimensions(second_array);
+      if (first_array_dimension.length > second_array_dimension.length) {
+        return true;
+      } else if (first_array_dimension.length == second_array_dimension.length) {
+        for (j in first_array_dimension) {
+          if (second_array_dimension[j] < first_array_dimension[j]) {
+            return true;
+          } else if (second_array_dimension[j] > first_array_dimension[j]) {
+            return false;
+          }
+        }
+        return false;
+      } else {
+        return false;
+      }
+    }
+
     return {
       get_Dimensions: get_Dimensions,
-      are_dimensions_same: check_all_dimensions_same
+      are_dimensions_same: check_all_dimensions_same,
+      is_first_greater: is_first_greater
     }
   }
 

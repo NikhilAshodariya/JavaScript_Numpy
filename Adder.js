@@ -98,7 +98,7 @@ var addOperator =
     }
 
     function inner_add(data_array, to_add) {
-      if (typeof(to_add) == 'number' || (basicFunc.get_Dimensions(to_add) == 1)) {
+      if (basicFunc.get_Dimensions(to_add).length == 1 && basicFunc.get_Dimensions(to_add)[0] == 1) {
         return add_number_and_array(data_array, to_add);
       } else if (typeof(to_add) == 'object') {
         if (basicFunc.are_dimensions_same(data_array, to_add)) {
@@ -111,16 +111,31 @@ var addOperator =
     }
 
     function add(data_array, to_add, replace) {
-      var ans = []
-      safety = deepClone.deepCloneObject(data_array);
-      res = inner_add(data_array, to_add);
-      if (replace == true) {
-        return res;
-      } else {
-        ans[0] = safety;
-        ans[1] = res;
-        return ans;
+      if (typeof(data_array) == 'number') {
+        var temp = data_array;
+        data_array = [];
+        data_array[0] = temp;
       }
+      if (typeof(to_add) == 'number') {
+        var temp = to_add;
+        to_add = [];
+        to_add[0] = temp;
+      }
+      var res = [];
+      var safety = [];
+
+      if (replace == true) {
+        safety = data_array;
+      } else {
+        safety = deepClone.deepCloneObject(data_array);
+      }
+
+      if (basicFunc.is_first_greater(data_array, to_add)) {
+        res = inner_add(safety, to_add);
+      } else {
+        res = inner_add(to_add, safety);
+      }
+      return res;
     }
 
     return {
