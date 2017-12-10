@@ -1,5 +1,4 @@
-var adder = require('./Adder.js');
-var subtractor = require('./Subtraction.js');
+var nj = require('./NumpyJS');
 
 var a = [
   [1, 2, 3],
@@ -74,7 +73,7 @@ var e = [
  * Position zero has the original data.
  * Position one has a calculated data.
  */
-res = adder.add(b, [1, 2, 3]);
+res = nj.add(b,a);
 console.log("-------Printing first result----------------");
 console.log(res);
 // console.log("-------Printing array D----------------------");
