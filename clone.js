@@ -1,5 +1,3 @@
-var basicFunc = require('./basicFunction');
-
 var deepClone =
   function() {
     function deepCloneObject(data) {
@@ -23,7 +21,13 @@ var deepClone =
         }
       }
       var newdata = []
-      return inner_deepCloneObject(data, newdata);
+
+      if (isPrimitive(data)) {
+        var a = data;
+        return a;
+      } else {
+        return inner_deepCloneObject(data, newdata);
+      }
     }
 
 

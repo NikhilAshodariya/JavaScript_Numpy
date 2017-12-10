@@ -1,6 +1,14 @@
 var basicOperations =
   function() {
     function get_Dimensions(data) {
+      /*checking for single error since it causes problem*/
+      if (typeof(data[0]) == 'number' && typeof(data) == 'object') {
+        var res = []
+        res[0] = 1;
+        res[1] = data.length;
+        return res;
+      }
+
       function get_Dim(data, dim, i = 0) {
         if (typeof(data) == "object") {
           dim[i] = data.length;

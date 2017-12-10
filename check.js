@@ -1,6 +1,5 @@
-var basicFunc = require('./basicFunction.js');
 var adder = require('./Adder.js');
-var clone = require('./clone.js');
+var subtractor = require('./Subtraction.js');
 
 var a = [
   [1, 2, 3],
@@ -22,6 +21,7 @@ var c = [
   [3],
   [4]
 ];
+
 
 
 var d = [
@@ -74,15 +74,17 @@ var e = [
  * Position zero has the original data.
  * Position one has a calculated data.
  */
-res = adder.add(b,c);
+res = adder.add(b, [1, 2, 3]);
 console.log("-------Printing first result----------------");
 console.log(res);
-console.log("-------Printing array b----------------------");
-console.log(b);
-
-
-res1 = adder.add(b,c,true);
-console.log("-------Printing second result----------------");
-console.log(res1);
-console.log("-------Printing array b----------------------");
-console.log(b);
+// console.log("-------Printing array D----------------------");
+// console.log(d);
+// console.log(b);
+//
+//
+// res1 = subtractor.subtract(d,b,true);
+// console.log("-------Printing second result----------------");
+// console.log(res1);
+// console.log("-------Printing array D----------------------");
+// console.log(d);
+// console.log(b);
