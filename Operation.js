@@ -18,11 +18,7 @@ var Operator =
         if (typeof(data_array[i]) == 'object') {
           data_array[i] = operation_number_and_array(data_array[i], to_operation, operation);
         } else {
-          if (basicFunc.get_Dimensions(to_operation).length == 1) {
-            data_array[i] = operation(data_array[i], to_operation[0]);
-          } else {
-            data_array[i] = operation(data_array[i], to_operation);
-          }
+          data_array[i] = operation(data_array[i], to_operation[0]);
         }
       }
       return data_array;
@@ -32,6 +28,7 @@ var Operator =
       var data_dimension = basicFunc.get_Dimensions(data_array);
       var to_operation_dimension = basicFunc.get_Dimensions(to_operation);
       var subset_data_dimension = data_dimension.slice(data_dimension.length - to_operation_dimension.length);
+
       function isInnerDimensionSame() {
         for (var i in to_operation_dimension) {
           if (to_operation_dimension[i] != subset_data_dimension[i]) {
@@ -57,9 +54,10 @@ var Operator =
 
     function operation_to_column(data_array, to_operation, i = 0, operation) {
       if (typeof(data_array[0]) == 'number') {
-        for (k in data_array) {
-          data_array[k] = operation(data_array[k], to_operation[i][0]);
-        }
+        // for (k in data_array) {
+        //   data_array[k] = operation(data_array[k], to_operation[i][0]);
+        // }
+        data_array = operation_number_and_array(data_array,to_operation[i],operation);
       } else if (typeof(data_array[i] == 'object')) {
         for (y in data_array) {
           operation_to_column(data_array[y], to_operation, y, operation);
@@ -68,8 +66,13 @@ var Operator =
     }
 
     function operation_to_row(data_array, to_operation, i = 0, operation) {
-      if (basicFunc.get_Dimensions(data_array).length == 2 && basicFunc.get_Dimensions(data_array)[0]==1) {
-        // console.log("in row adder");
+      // if (basicFunc.get_Dimensions(data_array).length == 2 && basicFunc.get_Dimensions(data_array)[0] == 1) {
+      if (basicFunc.isSingleArray(data_array)) {
+        /**
+          * Here we cannot use operation_number_and_array since
+          * we want to add a number to a element and not
+          * a number to and array
+        */
         for (j in data_array) {
           data_array[j] = operation(data_array[j], to_operation[j]);
         }
@@ -85,7 +88,6 @@ var Operator =
        * Here to_store is required because it operation with it self and creates a loop
        * so to avoid circular we need a separate array
        */
-      // console.log("in new operator");
       if (i < data_array.length) {
         if (basicFunc.are_dimensions_same(data_array, to_operation)) {
           to_store[i] = operation_two_array(data_array, to_operation, operation);
@@ -99,7 +101,7 @@ var Operator =
     }
 
     function inner_operation(data_array, to_operation, operation) {
-      if (basicFunc.get_Dimensions(to_operation).length == 1 && basicFunc.get_Dimensions(to_operation)[0] == 1) {
+      if (basicFunc.hasSingleItem(to_operation)) {
         return operation_number_and_array(data_array, to_operation, operation);
       } else if (typeof(to_operation) == 'object') {
         if (basicFunc.are_dimensions_same(data_array, to_operation)) {

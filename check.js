@@ -73,7 +73,7 @@ var e = [
  * Position zero has the original data.
  * Position one has a calculated data.
  */
-res = nj.add(b,a);
+res = nj.add(b,[1,2,3]);
 console.log("-------Printing first result----------------");
 console.log(res);
 // console.log("-------Printing array D----------------------");

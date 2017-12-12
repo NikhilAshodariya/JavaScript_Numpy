@@ -24,6 +24,22 @@ var basicOperations =
       return dimen;
     }
 
+    function isSingleArray(data) {
+      if (get_Dimensions(data).length == 2 && get_Dimensions(data)[0] == 1) {
+        return true;
+      }
+      return false;
+    }
+
+    function hasSingleItem(data){
+      if (data.length==1) {
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
     function check_all_dimensions_same(firstArray, secondArray) {
       var firstSize = get_Dimensions(firstArray);
       var secondSize = get_Dimensions(secondArray);
@@ -61,7 +77,9 @@ var basicOperations =
     return {
       get_Dimensions: get_Dimensions,
       are_dimensions_same: check_all_dimensions_same,
-      is_first_greater: is_first_greater
+      is_first_greater: is_first_greater,
+      isSingleArray:isSingleArray,
+      hasSingleItem:hasSingleItem
     }
   }
 
