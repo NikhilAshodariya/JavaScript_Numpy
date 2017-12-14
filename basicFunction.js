@@ -68,7 +68,7 @@ var basicOperations =
             return false;
           }
         }
-        return false;
+        return true;
       } else {
         return false;
       }
