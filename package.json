@@ -1,0 +1,30 @@
+{
+  "name": "jsnumpy",
+  "version": "1.0.0",
+  "description": "Always all the operation of Numpy in JS",
+  "main": "NumpyJS.js",
+  "dependencies": {
+    "matrix_deep_clone": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node check.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikhilAshodariya/JavaScript_Numpy.git"
+  },
+  "keywords": [
+    "Numpy",
+    "Javascript",
+    "add",
+	"subtract",
+	"multiply"
+  ],
+  "author": "Nikhil Ashodriya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikhilAshodariya/JavaScript_Numpy/issues"
+  },
+  "homepage": "https://github.com/NikhilAshodariya/JavaScript_Numpy#readme"
+}

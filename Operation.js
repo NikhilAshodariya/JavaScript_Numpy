@@ -1,30 +1,30 @@
 var basicFunc = require('./basicFunction.js');
-var deepClone = require('./clone.js');
+var deepClone = require('matrix_deep_clone');
 var Operator =
   function() {
-    function operation_two_array(data_array, to_operation, operation) {
+    function executeOnTwoArray(data_array, to_operation, task_to_perform) {
       for (i in data_array) {
         if (typeof(data_array[i]) == 'number') {
-          data_array[i] = operation(data_array[i], to_operation[i]);
+          data_array[i] = task_to_perform(data_array[i], to_operation[i]);
         } else if (typeof(data_array[i] == 'object')) {
-          operation_two_array(data_array[i], to_operation[i], operation);
+          executeOnTwoArray(data_array[i], to_operation[i], task_to_perform);
         }
       }
       return data_array;
     }
 
-    function operation_number_and_array(data_array, to_operation, operation) {
+    function executeOnNumberAndArray(data_array, to_operation, task_to_perform) {
       for (i in data_array) {
         if (typeof(data_array[i]) == 'object') {
-          data_array[i] = operation_number_and_array(data_array[i], to_operation, operation);
+          data_array[i] = executeOnNumberAndArray(data_array[i], to_operation, task_to_perform);
         } else {
-          data_array[i] = operation(data_array[i], to_operation[0]);
+          data_array[i] = task_to_perform(data_array[i], to_operation[0]);
         }
       }
       return data_array;
     }
 
-    function operation_nonEqual_array(data_array, to_operation, operation) {
+    function executeOnNonEqualArray(data_array, to_operation, task_to_perform) {
       var data_dimension = basicFunc.get_Dimensions(data_array);
       var to_operation_dimension = basicFunc.get_Dimensions(to_operation);
       var subset_data_dimension = data_dimension.slice(data_dimension.length - to_operation_dimension.length);
@@ -39,12 +39,12 @@ var Operator =
       }
 
       if (isInnerDimensionSame()) {
-        res = new_operation(data_array, to_operation, data_array.slice(), 0, operation);
+        res = executeOnInnerDimensions(data_array, to_operation, data_array.slice(), 0, task_to_perform);
       } else {
         if (data_dimension[data_dimension.length - 2] == to_operation_dimension[0]) {
-          operation_to_column(data_array, to_operation, 0, operation);
+          executeOnColumns(data_array, to_operation, 0, task_to_perform);
         } else if (data_dimension[data_dimension.length - 1] == to_operation_dimension[1]) {
-          operation_to_row(data_array, to_operation, 0, operation);
+          executeOnRow(data_array, to_operation, 0, task_to_perform);
         } else {
           throw new Error("Cannot compute the request Sorry");
         }
@@ -52,68 +52,65 @@ var Operator =
       return data_array;
     }
 
-    function operation_to_column(data_array, to_operation, i = 0, operation) {
+    function executeOnColumns(data_array, to_operation, i = 0, task_to_perform) {
       if (typeof(data_array[0]) == 'number') {
-        // for (k in data_array) {
-        //   data_array[k] = operation(data_array[k], to_operation[i][0]);
-        // }
-        data_array = operation_number_and_array(data_array,to_operation[i],operation);
+        data_array = executeOnNumberAndArray(data_array,to_operation[i],task_to_perform);
       } else if (typeof(data_array[i] == 'object')) {
         for (y in data_array) {
-          operation_to_column(data_array[y], to_operation, y, operation);
+          executeOnColumns(data_array[y], to_operation, y, task_to_perform);
         }
       }
     }
 
-    function operation_to_row(data_array, to_operation, i = 0, operation) {
+    function executeOnRow(data_array, to_operation, i = 0, task_to_perform) {
       // if (basicFunc.get_Dimensions(data_array).length == 2 && basicFunc.get_Dimensions(data_array)[0] == 1) {
       if (basicFunc.isSingleArray(data_array)) {
         /**
-          * Here we cannot use operation_number_and_array since
+          * Here we cannot use executeOnNumberAndArray since
           * we want to add a number to a element and not
           * a number to and array
         */
         for (j in data_array) {
-          data_array[j] = operation(data_array[j], to_operation[j]);
+          data_array[j] = task_to_perform(data_array[j], to_operation[j]);
         }
       } else {
         for (k in data_array) {
-          operation_to_row(data_array[k], to_operation, k, operation);
+          executeOnRow(data_array[k], to_operation, k, task_to_perform);
         }
       }
     }
 
-    function new_operation(data_array, to_operation, to_store = data_array.slice(), i = 0, operation) {
+    function executeOnInnerDimensions(data_array, to_operation, to_store = data_array.slice(), i = 0, task_to_perform) {
       /*
-       * Here to_store is required because it operation with it self and creates a loop
+       * Here to_store is required because it task_to_perform with it self and creates a loop
        * so to avoid circular we need a separate array
        */
       if (i < data_array.length) {
         if (basicFunc.are_dimensions_same(data_array, to_operation)) {
-          to_store[i] = operation_two_array(data_array, to_operation, operation);
+          to_store[i] = executeOnTwoArray(data_array, to_operation, task_to_perform);
         } else {
           for (j in data_array) {
-            new_operation(data_array[j], to_operation, data_array[j].slice(), j, operation);
+            executeOnInnerDimensions(data_array[j], to_operation, data_array[j].slice(), j, task_to_perform);
           }
         }
       }
       return to_store;
     }
 
-    function inner_operation(data_array, to_operation, operation) {
+    function innerExecute(data_array, to_operation, task_to_perform) {
       if (basicFunc.hasSingleItem(to_operation)) {
-        return operation_number_and_array(data_array, to_operation, operation);
+        return executeOnNumberAndArray(data_array, to_operation, task_to_perform);
       } else if (typeof(to_operation) == 'object') {
         if (basicFunc.are_dimensions_same(data_array, to_operation)) {
-          return operation_two_array(data_array, to_operation, operation);
+          return executeOnTwoArray(data_array, to_operation, task_to_perform);
         } else {
-          return operation_nonEqual_array(data_array, to_operation, operation);
+          return executeOnNonEqualArray(data_array, to_operation, task_to_perform);
         }
       }
       return data_array;
     }
 
-    function operation(data_array, to_operation, replace, operation) {
+    function mainExecute(data_array, to_operation, replace, task_to_perform) {
       if (typeof(data_array) == 'number') {
         var temp = data_array;
         data_array = [];
@@ -132,23 +129,25 @@ var Operator =
         if (replace == true) {
           safety = data;
         } else {
-          safety = deepClone.deepCloneObject(data);
+          safety = deepClone.deepCloneMatrix(data);
         }
         return safety;
       }
 
       if (basicFunc.is_first_greater(data_array, to_operation)) {
+        task_to_perform.shuffle = false;
         safety = get_toStore_object(data_array, replace);
-        res = inner_operation(safety, to_operation, operation);
+        res = innerExecute(safety, to_operation, task_to_perform);
       } else {
+        task_to_perform.shuffle = true;
         safety = get_toStore_object(to_operation, replace);
-        res = inner_operation(safety, data_array, operation);
+        res = innerExecute(safety, data_array, task_to_perform);
       }
       return res;
     }
 
     return {
-      operation: operation
+      execute: mainExecute
     }
   }
 

@@ -6,7 +6,7 @@ var adder = (
       function inner_add(a, b) {
         return a + b;
       }
-      return oper.operation(a, b, replace, inner_add);
+      return oper.execute(a, b, replace, inner_add);
     }
     return{
       add:add

@@ -6,7 +6,7 @@ var multiplier = (
       function inner_multiplyFunction(a, b) {
         return a * b;
       }
-      return oper.operation(a, b, replace, inner_multiplyFunction);
+      return oper.execute(a, b, replace, inner_multiplyFunction);
     }
     return{
       ElementMultiply:multiplyFunction

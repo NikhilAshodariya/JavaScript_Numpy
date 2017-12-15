@@ -1,12 +1,12 @@
 var deepClone =
   function() {
-    function deepCloneObject(data) {
+    function deepCloneMatrix(data) {
 
       function isPrimitive(test) {
         return (test !== Object(test));
       };
 
-      function inner_deepCloneObject(data, to_store) {
+      function inner_deepCloneMatrix(data, to_store) {
         if (isPrimitive(data[0])) {
           to_store = data.slice();
           return to_store;
@@ -15,7 +15,7 @@ var deepClone =
             // console.log('in loop fo for');
             // console.log(`i = ${i}`);
             to_store[i] = []
-            to_store[i] = inner_deepCloneObject(data[i], to_store[i]);
+            to_store[i] = inner_deepCloneMatrix(data[i], to_store[i]);
           }
           return to_store;
         }
@@ -26,13 +26,13 @@ var deepClone =
         var a = data;
         return a;
       } else {
-        return inner_deepCloneObject(data, newdata);
+        return inner_deepCloneMatrix(data, newdata);
       }
     }
 
 
     return {
-      deepCloneObject: deepCloneObject
+      deepCloneMatrix: deepCloneMatrix
     }
   }
 module.exports = deepClone();
