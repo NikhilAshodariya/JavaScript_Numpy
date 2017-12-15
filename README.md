@@ -40,7 +40,7 @@ var a = [[1,2,3],[4,5,6],[7,8,9]]
 var b = [1,2,3]
 ```
 ```
-nj.add(a,b);
+var res = nj.add(a,b);
 ```
 As of now the Library supports add, subtract and Elementwise multiply. 
 
