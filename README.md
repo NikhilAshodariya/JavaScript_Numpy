@@ -42,7 +42,7 @@ var b = [1,2,3]
 ```
 var res = nj.add(a,b);
 ```
-As of now the Library supports add, subtract and Elementwise multiply. 
+As of now the Library supports add, subtract and Elementwise multiply.
 
 ## Authors
 
