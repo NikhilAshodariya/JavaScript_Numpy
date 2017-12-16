@@ -13,7 +13,7 @@ var NumpyJS = (
       get_Dimensions: miscellaneousFunction.get_Dimensions,
       mean: stats.mean,
       square: stats.square,
-      sum: stats.findSum,
+      sum: stats.sum,
       totalElements: stats.findTotalElements,
       findHighestElement: stats.findHighestElement,
       findLowestElement: stats.findLowestElement,
