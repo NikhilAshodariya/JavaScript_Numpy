@@ -1,4 +1,5 @@
 var basicFunc = require('./basicFunction.js');
+var miscellaneousOperations = require('./Miscellaneous.js');
 var deepClone = require('matrix_deep_clone');
 var Operator =
   function() {
@@ -25,8 +26,8 @@ var Operator =
     }
 
     function executeOnNonEqualArray(data_array, to_operation, task_to_perform) {
-      var data_dimension = basicFunc.get_Dimensions(data_array);
-      var to_operation_dimension = basicFunc.get_Dimensions(to_operation);
+      var data_dimension = miscellaneousOperations.get_Dimensions(data_array);
+      var to_operation_dimension = miscellaneousOperations.get_Dimensions(to_operation);
       var subset_data_dimension = data_dimension.slice(data_dimension.length - to_operation_dimension.length);
 
       function isInnerDimensionSame() {
@@ -63,7 +64,7 @@ var Operator =
     }
 
     function executeOnRow(data_array, to_operation, i = 0, task_to_perform) {
-      // if (basicFunc.get_Dimensions(data_array).length == 2 && basicFunc.get_Dimensions(data_array)[0] == 1) {
+      // if (miscellaneousOperations.get_Dimensions(data_array).length == 2 && miscellaneousOperations.get_Dimensions(data_array)[0] == 1) {
       if (basicFunc.isSingleArray(data_array)) {
         /**
           * Here we cannot use executeOnNumberAndArray since

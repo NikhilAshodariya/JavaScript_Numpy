@@ -1,48 +1,25 @@
+var miscellaneousOperations = require('./Miscellaneous.js');
+
 var basicOperations =
   function() {
-    function get_Dimensions(data) {
-      /*checking for single error since it causes problem*/
-      if (typeof(data[0]) == 'number' && typeof(data) == 'object') {
-        var res = []
-        res[0] = 1;
-        res[1] = data.length;
-        return res;
-      }
-
-      function get_Dim(data, dim, i = 0) {
-        if (typeof(data) == "object") {
-          dim[i] = data.length;
-          get_Dim(data[0], dim, ++i);
-        } else if (typeof(data) == "number") {
-          return 1;
-        } else {
-          return undefined;
-        }
-      }
-      var dimen = [];
-      get_Dim(data, dimen);
-      return dimen;
-    }
-
     function isSingleArray(data) {
-      if (get_Dimensions(data).length == 2 && get_Dimensions(data)[0] == 1) {
+      if (miscellaneousOperations.get_Dimensions(data).length == 2 && miscellaneousOperations.get_Dimensions(data)[0] == 1) {
         return true;
       }
       return false;
     }
 
-    function hasSingleItem(data){
-      if (data.length==1) {
+    function hasSingleItem(data) {
+      if (data.length == 1) {
         return true;
-      }
-      else{
+      } else {
         return false;
       }
     }
 
     function check_all_dimensions_same(firstArray, secondArray) {
-      var firstSize = get_Dimensions(firstArray);
-      var secondSize = get_Dimensions(secondArray);
+      var firstSize = miscellaneousOperations.get_Dimensions(firstArray);
+      var secondSize = miscellaneousOperations.get_Dimensions(secondArray);
       if (firstSize.length != secondSize.length) {
         return false;
       } else {
@@ -56,8 +33,8 @@ var basicOperations =
     }
 
     function is_first_greater(first_array, second_array) {
-      first_array_dimension = get_Dimensions(first_array);
-      second_array_dimension = get_Dimensions(second_array);
+      first_array_dimension = miscellaneousOperations.get_Dimensions(first_array);
+      second_array_dimension = miscellaneousOperations.get_Dimensions(second_array);
       if (first_array_dimension.length > second_array_dimension.length) {
         return true;
       } else if (first_array_dimension.length == second_array_dimension.length) {
@@ -75,11 +52,10 @@ var basicOperations =
     }
 
     return {
-      get_Dimensions: get_Dimensions,
       are_dimensions_same: check_all_dimensions_same,
       is_first_greater: is_first_greater,
-      isSingleArray:isSingleArray,
-      hasSingleItem:hasSingleItem
+      isSingleArray: isSingleArray,
+      hasSingleItem: hasSingleItem
     }
   }
 

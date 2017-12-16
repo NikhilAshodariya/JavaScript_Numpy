@@ -1,4 +1,4 @@
-var oper = require('./Operation.js');
+var oper = require('./Execute.js');
 
 var subtractor = (
   function() {
@@ -8,9 +8,9 @@ var subtractor = (
          * inner_subtract.shuffle is set by the execute function of operation
          */
         if (inner_subtract.shuffle) {
-          return b - a;
+          return (b - a);
         }
-        return a - b;
+        return (a - b);
       }
       return oper.execute(a, b, replace, inner_subtract);
     }
