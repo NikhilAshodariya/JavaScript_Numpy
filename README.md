@@ -65,6 +65,8 @@ As of now the Library supports
 18.	findSampleVariance:- returns the population sample variance deviation.
 19.	findAllFrequency:- returns the frequency of all the elements in array/matrix
 20.	findMode:- returns the elements with highest frequency.
+21. flatten:- it converts the entire matrix into a single array.
+22. fillWithNumber:- it makes a matrix with the given dimension and filled with the Number provided.
 ```
 
 ## Authors

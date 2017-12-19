@@ -3,6 +3,7 @@ var subtractor = require('./Subtraction');
 var multiply = require('./ElementMultiply');
 var miscellaneousFunction = require('./Miscellaneous');
 var stats = require('./Statistics.js');
+
 var NumpyJS = (
   function() {
     return {
@@ -11,6 +12,8 @@ var NumpyJS = (
       ElementMultiply: multiply.ElementMultiply,
       generateRandomNumbers: miscellaneousFunction.generateRandomNumbers,
       get_Dimensions: miscellaneousFunction.get_Dimensions,
+      fillWithNumber: miscellaneousFunction.fillWithNumber,
+      flatten: miscellaneousFunction.flatten,
       mean: stats.mean,
       square: stats.square,
       sum: stats.sum,
