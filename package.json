@@ -1,6 +1,6 @@
 {
   "name": "jsnumpy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Always all the operation of Numpy in JS",
   "main": "NumpyJS.js",
   "dependencies": {
