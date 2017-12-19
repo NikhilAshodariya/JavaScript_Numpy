@@ -17,7 +17,7 @@ var NumpyJS = (
       mean: stats.mean,
       square: stats.square,
       sum: stats.sum,
-      totalElements: stats.findTotalElements,
+      totalElements: stats.totalElements,
       findHighestElement: stats.findHighestElement,
       findLowestElement: stats.findLowestElement,
       findRange: stats.findRange,
