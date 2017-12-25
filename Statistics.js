@@ -197,7 +197,7 @@ var stats =
         var counter = -1;
         for (var v of Object.keys(res)) {
           if (res[v] == max) {
-            ans[++counter] = v;
+            ans[++counter] = Number(v);
           }
         }
         return ans;

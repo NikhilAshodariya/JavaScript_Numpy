@@ -1,4 +1,6 @@
 var nj = require('./NumpyJS');
+var clone = require('matrix_deep_clone');
+// console.log(exponent);
 var a = [
   [1, 2, 3],
   [4, 5, 6],
@@ -59,5 +61,25 @@ var e = [
   ]
 ]
 
-var ans = nj.reshape(a, [2, 3, 2]);
+// var dim = nj.get_Dimensions(ans);
+console.log(nj);
+var a = [
+  [0.1, 0.2, 0.3],
+  [0.4, 0.5, 0.6],
+  [0.7, 0.8, 0.9],
+  [0.75, 0.45, 0.1]
+];
+
+var ans = nj.hyperbolicSine(a);
 console.log(ans);
+[
+  [0.10016675001984403, 0.20133600254109402, 0.3045202934471426],
+  [0.4107523258028155, 0.5210953054937474, 0.6366535821482412],
+  [0.7585837018395334, 0.888105982187623, 1.0265167257081753],
+  [0.82231673193583, 0.46534201693419774, 0.10016675001984403]
+]
+
+// console.log(dim);
+// var ans = nj.hyperbolicTangent(a);
+// console.log(`abcd = ${Math.pow(2.7183,1)}`);
+// console.log(ans);

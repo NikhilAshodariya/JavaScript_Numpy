@@ -78,7 +78,7 @@ var otherFunctions = function() {
         var temp = [];
         for (var j = 0; j < subset[subset.length - 1 - i]; j++) {
           if (i == 0) {
-            temp[j] = create2DMatrix(rowsNumber, colNumber)
+            temp[j] = create2DMatrix(rowsNumber, colNumber,number)
           }
         }
         if (i == 0) {
@@ -189,12 +189,49 @@ var otherFunctions = function() {
 
   }
 
+  function negative(data) {
+    function inner_negative(to_change) {
+      if (typeof(to_change) == 'number') {
+        return -to_change;
+      } else {
+        for (i in to_change) {
+          to_change[i] = inner_negative(to_change[i]);
+        }
+        return to_change;
+      }
+    }
+    safety = clone.deepCloneMatrix(data);
+    return inner_negative(safety);
+  }
+
+  function abs(data) {
+    function inner_abs(to_change) {
+      if (typeof(to_change) == 'number') {
+        if (to_change < 0) {
+          return -to_change;
+        } else {
+          return to_change;
+        }
+
+      } else {
+        for (i in to_change) {
+          to_change[i] = inner_abs(to_change[i]);
+        }
+        return to_change;
+      }
+    }
+    safety = clone.deepCloneMatrix(data);
+    return inner_abs(safety);
+  }
+
   return {
     generateRandomNumbers: generateRandomNumbers,
     get_Dimensions: get_Dimensions,
     fillWithNumber: fillWithNumber,
     flatten: flatten,
-    reshape: reshape
+    reshape: reshape,
+    negative: negative,
+    abs: abs
   }
 }
 module.exports = otherFunctions();
