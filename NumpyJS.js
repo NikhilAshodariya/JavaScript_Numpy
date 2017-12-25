@@ -14,6 +14,7 @@ var NumpyJS = (
       get_Dimensions: miscellaneousFunction.get_Dimensions,
       fillWithNumber: miscellaneousFunction.fillWithNumber,
       flatten: miscellaneousFunction.flatten,
+      reshape: miscellaneousFunction.reshape,
       mean: stats.mean,
       square: stats.square,
       sum: stats.sum,

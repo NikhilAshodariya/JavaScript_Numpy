@@ -1,4 +1,5 @@
 var clone = require('matrix_deep_clone');
+var stats = require('./Statistics.js');
 
 var otherFunctions = function() {
 
@@ -113,11 +114,87 @@ var otherFunctions = function() {
     return newdata;
   }
 
+  function reshape(data, dim) {
+    function inner_reshape() {
+      var rowsNumber = dim[dim.length - 2];
+      var colNumber = dim[dim.length - 1];
+
+      function create2DMatrix(rows, columns, to_fill = 0) {
+        var res = [];
+
+        function createArray(number, to_fill = 0) {
+          var temp = [];
+          for (var i = 0; i < number; i++) {
+            temp[i] = to_fill_data[++counter];
+          }
+          return temp;
+        }
+
+        for (var j = 0; j < rows; j++) {
+          res[j] = createArray(columns, to_fill);
+        }
+        return res;
+      }
+
+      if (dim.length == 2) {
+        return create2DMatrix(rowsNumber, colNumber);
+      } else {
+        // it is a higher dimension matrix
+        var res = [];
+        var subset = dim.slice(0, dim.length - 2);
+        for (var i = 0; i < subset.length; i++) {
+          var temp = [];
+          for (var j = 0; j < subset[subset.length - 1 - i]; j++) {
+            if (i == 0) {
+              temp[j] = create2DMatrix(rowsNumber, colNumber)
+            }
+          }
+          if (i == 0) {
+            res[i] = temp;
+          } else {
+            res[i] = clone.deepCloneMatrix(res[i - 1]);
+          }
+        }
+        if (res.length == 1) {
+          return res[0];
+        } else {
+          return res;
+        }
+      }
+    }
+
+    function isDataValid() {
+      var elementsInDim = 1;
+      for (var v of dim) {
+        elementsInDim *= v;
+      }
+      var givenElements = stats.totalElements(data);
+      if (givenElements !== elementsInDim) {
+        // console.log("Wrong input please try again");
+        return false;
+      } else {
+        // console.log("correct input");
+        return true;
+      }
+      console.log(elementsInDim);
+    }
+
+    if (isDataValid()) {
+      var counter = -1;
+      to_fill_data = flatten(data);
+      return inner_reshape();
+    } else {
+      throw new Error("cannot reshape data incorrect dimension given ");
+    }
+
+  }
+
   return {
     generateRandomNumbers: generateRandomNumbers,
     get_Dimensions: get_Dimensions,
     fillWithNumber: fillWithNumber,
-    flatten: flatten
+    flatten: flatten,
+    reshape: reshape
   }
 }
 module.exports = otherFunctions();
