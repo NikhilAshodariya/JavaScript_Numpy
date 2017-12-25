@@ -67,6 +67,7 @@ As of now the Library supports
 20.	findMode:- returns the elements with highest frequency.
 21. flatten:- it converts the entire matrix into a single array.
 22. fillWithNumber:- it makes a matrix with the given dimension and filled with the Number provided.
+23. reshape:- this function reshape the given data to the given dimension
 ```
 
 ## Authors
