@@ -28,7 +28,6 @@ After going inside the library type
 $ npm test
 ```
 
-
 ## Basics
 
 ### Array Creation
@@ -36,17 +35,29 @@ $ npm test
 ```javascript
 > var a = nj.fillWithNumber([2,3,4],5);
 > a
-[ [ [ 5, 5, 5, 5 ], [ 5, 5, 5, 5 ], [ 5, 5, 5, 5 ] ],
-  [ [ 5, 5, 5, 5 ], [ 5, 5, 5, 5 ], [ 5, 5, 5, 5 ] ] ]
+[
+  [
+    [5, 5, 5, 5],
+    [5, 5, 5, 5],
+    [5, 5, 5, 5]
+  ],
+  [
+    [5, 5, 5, 5],
+    [5, 5, 5, 5],
+    [5, 5, 5, 5]
+  ]
+]
 ```
 
-**Note**: The default parameter to fill in array is zero. Here number 5 is used to fill the array.
+**Note**: The fillWithNumber take two parameter the first parameter is the dimension of the required matrix in the above example the function creates a 3D matrix with three rows and four columns it is similar to Numpy function of Python. The default parameter to fill in array is zero. Here number 5 is used to fill the array.
 
 ```javascript
 > var dim = nj.get_Dimensions(a);
 > dim
 [2,3,4]
 ```
+
+**NOTE**: The function get_Dimensions returns the dimension of the given matrix.
 
 ```javascript
 > var totalNumber = 10;
@@ -57,7 +68,7 @@ $ npm test
 [ 10, 20, 19, 14, 12, 18, 23, 25, 6, 22 ]
 ```
 
-**Note**: The default parameter value for minRange is zero and maxRange is totalNumber
+**Note**: The function generateRandomNumbers provides a list of random numbers generated with the minRange and maxRange the default parameter value for minRange is zero and maxRange is totalNumber
 
 ## Matrix Manipulation
 
@@ -75,7 +86,7 @@ $ npm test
 [ 13, 3, 21, 16, 25, 4, 9, 15, 20, 12, 17, 14, 5, 22, 11, 24 ]
 ```
 
-**Note** : In reshape the first parameter is the data and the second parameter is dimension
+**Note** : In `reshape` function the first parameter is the data and the second parameter is the new dimension to which the data needs to be reshaped. The function `flatten` converts the matrix into a single Array.
 
 ## Arithmetic Operation
 
@@ -120,7 +131,7 @@ $ npm test
 ]
 ```
 
-**Note** : ElementMultiply is not a matrix mulitply instead it multiplies element by element.
+**Note** : The function `ElementMultiply` is not a matrix multiply instead it multiplies element by element. The `add` and `subtract` functions provides functionality similar to Numpy of Python
 
 ## Logarithm
 
@@ -184,7 +195,7 @@ The library supports three logarithmic functions first log10, logE, log.
 ]
 ```
 
-**NOTE**: The function declaration is `js nj.log(exponent, base)`. In the above example we calculate the log of matrix a with base seven(7).
+**NOTE**: The function declaration is `nj.log(exponent, base)`. In the above example we calculate the log of matrix a with base seven(7).
 
 ```javascript
 > var a = [
@@ -279,7 +290,11 @@ ans
     [-80, -50, -40]
   ]
 ]
+```
 
+**NOTE**: The `negative` function calculates the negative of each element of the given Matrix.
+
+```javascript
 > var res = nj.abs(ans);
 > res
 [
@@ -298,6 +313,8 @@ ans
 ]
 ```
 
+**NOTE**: The abs function finds the absolute value of the given matrix.
+
 ```javascript
 > var a = [
   [1, 2, 3],
@@ -308,7 +325,11 @@ ans
 > var ans = nj.mean(a);
 > ans
 4.416666666666667
+```
 
+The `mean` function calculates the mean of the matrix provided.
+
+```javascript
 > ans = nj.square(a);
 > ans
 [
@@ -317,19 +338,35 @@ ans
   [49, 64, 81],
   [25, 4, 1]
 ]
+```
 
+**NOTE**: `square` function calculates the square of each element of the given matrix.
+
+```javascript
 > ans = nj.sum(a);
 > ans
 53
+```
 
+The `sum` function returns the sum of all the elements of the matrix.
+
+```javascript
 > ans = nj.totalElements(a);
 > ans
 12
+```
 
+The `totalElements` function returns the total number of elements in the given Matrix.
+
+```javascript
 > ans = nj.findHighestElement(a);
 > ans
 9
+```
 
+The `findHighestElement` function returns the highest value of the matrix provided.
+
+```javascript
 > ans = nj.findLowestElement(a);
 > ans
 1
@@ -407,6 +444,20 @@ undefined
   [125, 8, 1]
 ]
 
+> ans = nj.power(3,a);
+> ans
+[
+  [3, 9, 27],
+  [81, 243, 729],
+  [2187, 6561, 19683],
+  [243, 9, 3]
+]
+```
+
+**NOTE**: The `power` function returns the cube of element of the matrix a. `nj.power(3,a)` gives a different result it calculates three to the power of first row of matrix a in the above example it calculates 3^1, 3^2, 3^3 for the first row for second row it calculates the three to the power of second row of matrix a in the above example it calculates 3^4, 3^5, 3^6 and so on.
+
+```javascript
+
 > ans = nj.exp(a);
 > ans
 [
@@ -416,6 +467,8 @@ undefined
   [148.41265995084171, 7.3890461584, 2.71828]
 ]
 ```
+
+**NOTE**: The `exp` function calculates e^a i.e it calculates e raise to the power of each element of matrix a.
 
 ## Matrix Operations
 
@@ -467,8 +520,9 @@ undefined
   [-0.801, 0.581, -0.506]
 ]
 ```
+__NOTE__: `nj.sin(a)` calculates the sin of the angles provided in matrix a. The angle are assumed to be in degree. 
 
-**Note**: nj.cos, nj.tan also exists.
+**Note**: `nj.sin(a,"radian")` takes matrix a as the matrix of angle in radian. nj.cos, nj.tan also exists.
 
 ```javascript
 > var a = [
