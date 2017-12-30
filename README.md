@@ -28,25 +28,6 @@ After going inside the library type
 $ npm test
 ```
 
-The above command will run check.js. The test file creates and 2D array and subtracts it
-
-### Breaking down into end to end tests
-
-```
-var nj = require('jsnumpy');
-```
-
-```
-var a = [[1,2,3],[4,5,6],[7,8,9]]
-```
-
-```
-var b = [1,2,3]
-```
-
-```
-var res = nj.add(a,b);
-```
 
 ## Basics
 
