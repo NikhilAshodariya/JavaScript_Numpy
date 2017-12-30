@@ -392,4 +392,4 @@ __Note__: hyperbolicCosine, hyperbolicTangent also exists.
 
 This project is licensed under the MIT [License](LICENSE) - see the
 
-<license> [file for details] (LICENSE)</license>
+[file for details] (LICENSE)
