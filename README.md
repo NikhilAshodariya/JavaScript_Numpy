@@ -414,8 +414,4 @@ undefined
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) - see the
-<<<<<<< HEAD
-=======
-
->>>>>>> 1c9b84e2950e1a5f28dc3ea2424e271e95dd3d66
+This project is licensed under the [MIT License](LICENSE)
