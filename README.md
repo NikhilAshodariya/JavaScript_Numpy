@@ -314,6 +314,29 @@ undefined
 ]
 ```
 
+## Matrix Operations
+
+```javascript
+> var a = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [5, 2, 1]
+];
+
+> var ans = nj.transpose(a);
+> ans
+[
+  [1, 4, 7, 5],
+  [2, 5, 8, 2],
+  [3, 6, 9, 1]
+]
+```
+
+**NOTE** : The transpose function also works for higher dimensions. The transpose function is very much similar to Numpy transpose of Python.
+
+
+
 ## Trigonometric Functions
 
 **Note** : All the functions like sin, cos, tan allows radian as well as degree.
@@ -382,7 +405,8 @@ undefined
   [0.82231673193583, 0.46534201693419774, 0.10016675001984403]
 ]
 ```
-__Note__: hyperbolicCosine, hyperbolicTangent also exists.
+
+**Note**: hyperbolicCosine, hyperbolicTangent also exists.
 
 ## Authors
 
@@ -391,4 +415,7 @@ __Note__: hyperbolicCosine, hyperbolicTangent also exists.
 ## License
 
 This project is licensed under the [MIT License](LICENSE) - see the
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1c9b84e2950e1a5f28dc3ea2424e271e95dd3d66
