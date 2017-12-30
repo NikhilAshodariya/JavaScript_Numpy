@@ -141,6 +141,128 @@ var res = nj.add(a,b);
 
 **Note** : ElementMultiply is not a matrix mulitply instead it multiplies element by element.
 
+## Logarithm
+
+The library supports three logarithmic functions first log10, logE, log.
+
+```javascript
+> var a = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [5, 2, 1]
+];
+
+> var ans = nj.log10(a);
+> ans
+[
+  [0, 0.30103, 0.47712125],
+  [0.60205999, 0.69897, 0.77815125],
+  [0.84509804, 0.90308999, 0.95424251],
+  [0.69897, 0.30103, 0]
+]
+```
+
+**Note** : The log10 function finds the log to the base 10 of the given nd-Array or of a Number
+
+```javascript
+> var a = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [5, 2, 1]
+];
+
+> var ans = nj.logE(a);
+> ans
+[
+  [0, 0.69314718, 1.09861229],
+  [1.38629436, 1.60943791, 1.79175947],
+  [1.94591015, 2.07944154, 2.19722458],
+  [1.60943791, 0.69314718, 0]
+]
+```
+
+**Note** : The logE function finds the log to the base e of the given nd-Array or of a Number.
+
+### Log to the base n
+
+```javascript
+> var a = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [5, 2, 1]
+];
+> var ans = nj.log(a,7);
+[
+  [0, 0.35620719, 0.56457503],
+  [0.71241437, 0.82708748, 0.92078222],
+  [1, 1.06862156, 1.12915007],
+  [0.82708748, 0.35620719, 0]
+]
+```
+
+**NOTE**: The function declaration is `js nj.log(exponent, base)`. In the above example we calculate the log of matrix a with base seven(7).
+
+```javascript
+> var a = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [5, 2, 1]
+];
+
+> var c = [
+  [10],
+  [20],
+  [30],
+  [40]
+];
+
+> var ans = nj.log(a,c);
+ans
+[
+  [0, 0.30103, 0.47712125],
+  [0.46275643, 0.53724357, 0.598104],
+  [0.57212503, 0.61138514, 0.64601501],
+  [0.43629453, 0.18790182, 0]
+]
+```
+
+**NOTE**: In the above above example log is calculate for matrix a with base c. In the above operation log of first row of matrix a is calculate with base 10 i.e. [log10(1), log10(2), log10(3)], log of second row of matrix a is calculate with base 20 i.e. [log20(4), log20(5), log20(6)] and so on.
+
+**NOTE**: The library is written in such a way that in above example nj.log(a,c) is not equal to nj.log(c,a);
+
+```javascript
+> var a = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [5, 2, 1]
+];
+
+> var c = [
+  [10],
+  [20],
+  [30],
+  [40]
+];
+
+> var ans = nj.log(c,a);
+ans
+[
+  [Infinity, 3.32192809, 2.09590327],
+  [2.16096405, 1.86135312, 1.67195002],
+  [1.7478697, 1.6356302, 1.54795164],
+  [2.29202967, 5.32192809, Infinity]
+]
+```
+
+**NOTE**: In the above example we have taken nj.log(c,a) that means in the above operation log of first row of matrix c is calculated with bases [1, 2, 3] i.e. the first row of the answer is [log1(10), log2(10), log3(10)] i.e log of ten with base one, log of ten with base two, and log of ten with base three. For the second row bases are [4, 5, 6] i.e. the second row of the anser is [log4(20), log5(20), log6(20)] i.e. log of twenty with base four, log of twenty with base five, and log of twenty with base six. For the rest rows the process remains same.
+
+**NOTE**: The log function provides great flexibility if needed.
+
 ## Statistics Operation
 
 ```javascript
@@ -334,8 +456,6 @@ undefined
 ```
 
 **NOTE** : The transpose function also works for higher dimensions. The transpose function is very much similar to Numpy transpose of Python.
-
-
 
 ## Trigonometric Functions
 

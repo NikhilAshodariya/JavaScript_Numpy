@@ -13,10 +13,10 @@ var b = [
   [5, 2, 1]
 ];
 var c = [
-  [1],
-  [2],
-  [3],
-  [4]
+  [10],
+  [20],
+  [30],
+  [40]
 ];
 var d = [
   // (3,4,5)
@@ -105,6 +105,6 @@ var k = [
 ]
 
 
-console.log(a);
+console.log(c);
 console.log("---------------------");
-console.log(nj.transpose(a));
+console.log(nj.log(a, c));

@@ -7,6 +7,7 @@ var stats = require('./Statistics.js');
 var exp = require('./exp.js');
 var trigoFunctions = require('./TrignometricFunctions.js');
 var complexMatrixOperations = require('./ComplexMatrixOperation.js');
+var logarithm = require('./Log.js');
 
 var NumpyJS = (
   function() {
@@ -47,7 +48,10 @@ var NumpyJS = (
       hyperbolicSine: trigoFunctions.hyperbolicSine,
       hyperbolicCosine: trigoFunctions.hyperbolicCosine,
       hyperbolicTangent: trigoFunctions.hyperbolicTangent,
-      transpose: complexMatrixOperations.transpose
+      transpose: complexMatrixOperations.transpose,
+      log10: logarithm.log10,
+      logE: logarithm.logE,
+      log: logarithm.log
     }
   }
 );
