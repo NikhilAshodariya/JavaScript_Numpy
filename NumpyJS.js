@@ -49,6 +49,7 @@ var NumpyJS = (
       hyperbolicCosine: trigoFunctions.hyperbolicCosine,
       hyperbolicTangent: trigoFunctions.hyperbolicTangent,
       transpose: complexMatrixOperations.transpose,
+      findDeterminant: complexMatrixOperations.findDeterminant,
       log10: logarithm.log10,
       logE: logarithm.logE,
       log: logarithm.log

@@ -64,8 +64,106 @@ var complexMatrixOperations = function() {
     return miscellaneous.reshape(finalData, dim);
   }
 
-  return{
-    transpose:transpose
+  function findDeterminant(data) {
+    function isSquare(data) {
+      var dim = miscellaneous.get_Dimensions(data);
+      var rows = dim[dim.length - 2];
+      var columns = dim[dim.length - 1];
+      if (rows == columns && dim.length == 2) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+    function nCrossNDeterminant(data) {
+
+      function twoCrossTwoDeterminant(data) {
+        return (data[0][0] * data[1][1]) - (data[0][1] * data[1][0]);
+      }
+
+
+      var dim = miscellaneous.get_Dimensions(data);
+      var rows = dim[dim.length - 2];
+      var column = dim[dim.length - 1];
+      if (rows == 2 && column == 2) {
+        return twoCrossTwoDeterminant(data)
+      } else {
+        var toOperate = data[0];
+        var yui = -1;
+        var timepass = [];
+        var ans = 0;
+        var sign = 1;
+        for (i in toOperate) {
+          // starting j from one since at zero toOperate data is there
+          var newData = [];
+          var tig = -1;
+          for (j = 1; j < data.length; j++) {
+            var temp = [];
+            var counter = -1;
+            var yak = data[j];
+            for (v in yak) {
+              if (v != i) {
+                temp[++counter] = yak[v];
+                // console.log(`data inserted is ${yak[v]}`);
+              } else {
+                // console.log(`data avoided = ${yak[v]}`);
+              }
+            }
+            // newData = newData.concat(yak);
+            // console.log(`temp is ${temp}`);
+            newData[++tig] = temp;
+          }
+          ans = ans + sign * toOperate[i] * nCrossNDeterminant(newData);
+          sign = sign * -1;
+          timepass[i] = newData;
+        }
+        return ans;
+      }
+    }
+
+
+    var dim = miscellaneous.get_Dimensions(data);
+    var rows = dim[dim.length - 2];
+    var columns = dim[dim.length - 1];
+
+    if (rows != columns) {
+      throw new Error("To calculate Determinant the matrix should be square");
+    } else {
+      var res = [];
+      var counter = -1;
+
+      function innerDeterminant(innerData) {
+        if (isSquare(innerData)) {
+          res[++counter] = nCrossNDeterminant(innerData);
+        } else {
+          for (i in innerData) {
+            innerDeterminant(innerData[i]);
+          }
+        }
+      }
+
+      innerDeterminant(data);
+      if (res.length == 1) {
+        return res[0];
+      } else {
+        console.log(dim.slice(0, dim.length - 2));
+        var te = dim.slice(0, dim.length - 2);
+        if (te.length >= 2) {
+          return miscellaneous.reshape(res, te);
+        } else {
+          return res;
+        }
+      }
+    }
+
+  }
+
+
+  return {
+    transpose: transpose,
+    findDeterminant: findDeterminant
   }
 }
 

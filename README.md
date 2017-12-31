@@ -491,6 +491,108 @@ undefined
 
 **NOTE** : The transpose function also works for higher dimensions. The transpose function is very much similar to Numpy transpose of Python.
 
+### Find Determinant
+
+```javascript
+> var a = [
+  [10, 32, 34],
+  [54, 50, 26],
+  [17, 83, 91]
+];
+> var ans = nj.findDeterminant(a);
+> ans
+4304
+```
+
+**NOTE**: The `findDeterminant` function finds the Determinant of the given Matrix.
+
+```javascript
+
+> var b =[
+  [34, 59, 51, 63, 69],
+  [60, 61, 21, 60, 32],
+  [51, 43, 45, 7, 50],
+  [42, 90, 46, 86, 9],
+  [83, 6, 87, 60, 35]
+];
+
+> var ans = nj.findDeterminant(b);
+> ans
+-979886677
+```
+
+**NOTE**: The `findDeterminant` function works for N*N dimension matrix.
+
+```javascript
+> var a = [
+  [
+    [4, 28],
+    [66, 6]
+  ],
+
+  [
+    [68, 51],
+    [64, 5]
+  ],
+
+  [
+    [76, 96],
+    [31, 6]
+  ]
+];
+> var ans = nj.findDeterminant(a);
+> ans
+[ -1824, -2924, -2520 ]
+```
+
+```javascript
+> var a = [
+  [
+    [
+      [67, 71],
+      [22, 75]
+    ],
+
+    [
+      [97, 77],
+      [54, 32]
+    ],
+
+    [
+      [91, 50],
+      [79, 51]
+    ]
+  ],
+
+
+  [
+    [
+      [84, 85],
+      [88, 99]
+    ],
+
+    [
+      [33, 58],
+      [51, 50]
+    ],
+
+    [
+      [30, 8],
+      [15, 89]
+    ]
+  ]
+];
+
+> var ans = nj.findDeterminant(a);
+> ans
+[
+  [3463, -1054, 691],
+  [836, -1308, 2550]
+]
+```
+
+**NOTE** : `findDeterminant` function retains the shape of Matrix since the matrix's outer shape was of (2,3) so the ans of `findDeterminant` is also (2,3).
+
 ## Trigonometric Functions
 
 **Note** : All the functions like sin, cos, tan allows radian as well as degree.
@@ -520,7 +622,8 @@ undefined
   [-0.801, 0.581, -0.506]
 ]
 ```
-__NOTE__: `nj.sin(a)` calculates the sin of the angles provided in matrix a. The angle are assumed to be in degree. 
+
+**NOTE**: `nj.sin(a)` calculates the sin of the angles provided in matrix a. The angle are assumed to be in degree.
 
 **Note**: `nj.sin(a,"radian")` takes matrix a as the matrix of angle in radian. nj.cos, nj.tan also exists.
 
