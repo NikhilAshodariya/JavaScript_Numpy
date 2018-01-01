@@ -593,6 +593,20 @@ undefined
 
 **NOTE** : `findDeterminant` function retains the shape of Matrix since the matrix's outer shape was of (2,3) so the ans of `findDeterminant` is also (2,3).
 
+###### Generating Identity Matrix
+```js
+> var dim = [4, 4];
+> var ans = nj.generateIdentityMatrix(dim);
+ans
+[
+  [1, 0, 0, 0],
+  [0, 1, 0, 0],
+  [0, 0, 1, 0],
+  [0, 0, 0, 1]
+]
+```
+__NOTE__: `generateIdentityMatrix` function generates an Identity matrix of the given dimension. The function also checks if the dimension given is square. The function can generate an ndArray. 
+
 ## Trigonometric Functions
 
 **Note** : All the functions like sin, cos, tan allows radian as well as degree.

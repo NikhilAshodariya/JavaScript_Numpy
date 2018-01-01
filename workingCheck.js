@@ -1,24 +1,11 @@
 var nj = require('./NumpyJS.js');
-console.log(nj);
+// console.log(nj);
 
 var a = [
-  [
-    [4, 28],
-    [66, 6]
-  ],
-
-  [
-    [68, 51],
-    [64, 5]
-  ],
-
-  [
-    [76, 96],
-    [31, 6]
-  ]
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
 ];
 
 
-
-
-console.log(nj.findDeterminant(a));
+console.log(nj.generateIdentityMatrix([4, 4]));

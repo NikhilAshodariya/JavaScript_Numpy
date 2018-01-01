@@ -160,10 +160,64 @@ var complexMatrixOperations = function() {
 
   }
 
+  function generateIdentityMatrix(dim) {
+    var rowsNumber = dim[dim.length - 2];
+    var colNumber = dim[dim.length - 1];
+
+    function create2DMatrix(rows, columns) {
+      var res = [];
+
+      for (var i = 0; i < rows; i++) {
+        var temp = [];
+        for (var j = 0; j < columns; j++) {
+          if (i == j) {
+            temp[j] = 1;
+          } else {
+            temp[j] = 0;
+          }
+        }
+        res[i] = temp;
+      }
+      return res;
+    }
+
+    if (rowsNumber != colNumber) {
+      throw new Error("The dimensions should be square dimension");
+    } else {
+      if (dim.length == 2) {
+        return create2DMatrix(rowsNumber, colNumber);
+      } else {
+        // it is a higher dimension matrix
+        var res = [];
+        var subset = dim.slice(0, dim.length - 2);
+        for (var i = 0; i < subset.length; i++) {
+          var temp = [];
+          for (var j = 0; j < subset[subset.length - 1 - i]; j++) {
+            if (i == 0) {
+              temp[j] = create2DMatrix(rowsNumber, colNumber)
+            }
+          }
+          if (i == 0) {
+            res[i] = temp;
+          } else {
+            res[i] = clone.deepCloneMatrix(res[i - 1]);
+          }
+        }
+        if (res.length == 1) {
+          return res[0];
+        } else {
+          return res;
+        }
+      }
+    }
+
+  }
+
 
   return {
     transpose: transpose,
-    findDeterminant: findDeterminant
+    findDeterminant: findDeterminant,
+    generateIdentityMatrix: generateIdentityMatrix
   }
 }
 
