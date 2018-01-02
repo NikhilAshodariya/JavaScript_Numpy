@@ -1,11 +1,10 @@
 var nj = require('./NumpyJS.js');
-// console.log(nj);
+console.log(nj);
 
 var a = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
 ];
 
-
-console.log(nj.generateIdentityMatrix([4, 4]));
+console.log(nj.matrixInverse(a));

@@ -51,6 +51,7 @@ var NumpyJS = (
       transpose: complexMatrixOperations.transpose,
       findDeterminant: complexMatrixOperations.findDeterminant,
       generateIdentityMatrix: complexMatrixOperations.generateIdentityMatrix,
+      matrixInverse: complexMatrixOperations.matrixInverse,
       log10: logarithm.log10,
       logE: logarithm.logE,
       log: logarithm.log

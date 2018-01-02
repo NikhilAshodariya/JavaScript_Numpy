@@ -491,6 +491,26 @@ undefined
 
 **NOTE** : The transpose function also works for higher dimensions. The transpose function is very much similar to Numpy transpose of Python.
 
+### Find Matrix Inverse
+
+```javascript
+> var a = [
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
+];
+
+> var ans = nj.matrixInverse(a);
+ans
+[
+  [-0.05263157894736842, 0.02631578947368421, 0.15789473684210525],
+  [0.14035087719298245, 0.09649122807017543, -0.08771929824561403],
+  [0.22807017543859648, -0.2807017543859649, -0.017543859649122806]
+]
+```
+
+**NOTE**: The `matrixInverse` function finds the inverse of the given ndArray. It generates an error if the determinant of the given matrix is zero.
+
 ### Find Determinant
 
 ```javascript
@@ -593,8 +613,9 @@ undefined
 
 **NOTE** : `findDeterminant` function retains the shape of Matrix since the matrix's outer shape was of (2,3) so the ans of `findDeterminant` is also (2,3).
 
-###### Generating Identity Matrix
-```js
+#### Generating Identity Matrix
+
+```javascript
 > var dim = [4, 4];
 > var ans = nj.generateIdentityMatrix(dim);
 ans
@@ -605,7 +626,8 @@ ans
   [0, 0, 0, 1]
 ]
 ```
-__NOTE__: `generateIdentityMatrix` function generates an Identity matrix of the given dimension. The function also checks if the dimension given is square. The function can generate an ndArray. 
+
+**NOTE**: `generateIdentityMatrix` function generates an Identity matrix of the given dimension. The function also checks if the dimension given is square. The function can generate an ndArray.
 
 ## Trigonometric Functions
 
