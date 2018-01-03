@@ -133,6 +133,73 @@ $ npm test
 
 **Note** : The function `ElementMultiply` is not a matrix multiply instead it multiplies element by element. The `add` and `subtract` functions provides functionality similar to Numpy of Python
 
+### Matrix Multiplication
+```js
+> var a = [
+  [47, 10, 84, 64],
+  [33, 19, 98, 25],
+];
+
+> var b = [
+  [93, 85],
+  [66, 91],
+  [95, 77],
+  [84, 30]
+];
+
+> var ans = nj.matrixMultiply(a,b);
+ans
+[
+  [18387, 13293],
+  [15733, 12830]
+]
+
+```
+The `matrixMultiply` function multiplies the given matrix according to the matrix multiplication rules.
+
+```js
+> var a = [
+  [
+    [83, 41, 41, 27],
+    [66, 63, 51, 15],
+    [10, 39, 59, 44],
+    [47, 4, 15, 97]
+  ],
+
+  [
+    [93, 50, 70, 33],
+    [32, 22, 27, 67],
+    [66, 98, 69, 81],
+    [80, 64, 1, 95]
+  ]
+];
+
+> var b = [
+  [67, 52, 43, 68],
+  [81, 4, 83, 97],
+  [86, 27, 94, 12],
+  [85, 81, 17, 61]
+];
+
+> var ans = nj.matrixMultiply(a,b);
+ans
+[
+  [
+    [14703, 7774, 11285, 11760],
+    [15186, 6276, 13116, 12126],
+    [12643, 5833, 9961, 7855],
+    [13008, 10722, 5412, 9681]
+  ],
+  [
+    [19106, 9599, 15290, 14027],
+    [11943, 7908, 6879, 8721],
+    [25179, 12248, 18835, 19763],
+    [18705, 12138, 10461, 17455]
+  ]
+]
+```
+__NOTE__: The `matrixMultiply` function can multiply ndArray with the given matrix of ndArray if the shape of both the matrix are compatible else it generates an error.
+
 ## Logarithm
 
 The library supports three logarithmic functions first log10, logE, log.
