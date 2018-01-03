@@ -144,10 +144,6 @@ var stats =
 
       var temp = nj.subtract(data, mean);
       var total = findTotalElements(temp);
-      console.log(`mean is ${mean}`);
-      console.log(`temp in stats is = ${temp}`);
-      console.log(`total is ${total}`);
-      console.log(`mean is ${findMean(temp)}`);
       return Math.sqrt((findMean(temp) * total) / (total - 1));
     }
 
