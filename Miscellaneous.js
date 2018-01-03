@@ -176,7 +176,6 @@ var otherFunctions = function() {
         // console.log("correct input");
         return true;
       }
-      console.log(elementsInDim);
     }
 
     if (isDataValid()) {
