@@ -108,13 +108,9 @@ var complexMatrixOperations = function() {
             for (v in yak) {
               if (v != i) {
                 temp[++counter] = yak[v];
-                // console.log(`data inserted is ${yak[v]}`);
               } else {
-                // console.log(`data avoided = ${yak[v]}`);
               }
             }
-            // newData = newData.concat(yak);
-            // console.log(`temp is ${temp}`);
             newData[++tig] = temp;
           }
           ans = ans + sign * toOperate[i] * nCrossNDeterminant(newData);
