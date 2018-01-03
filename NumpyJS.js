@@ -1,6 +1,7 @@
 var adder = require('./Adder');
 var subtractor = require('./Subtraction');
 var multiply = require('./ElementMultiply');
+var matrixMultiply = require('./MatrixMultiply.js');
 var power = require('./Power.js');
 var miscellaneousFunction = require('./Miscellaneous');
 var stats = require('./Statistics.js');
@@ -15,6 +16,7 @@ var NumpyJS = (
       add: adder.add,
       subtract: subtractor.subtract,
       ElementMultiply: multiply.ElementMultiply,
+      matrixMultiply: matrixMultiply.matrixMultiply,
       generateRandomNumbers: miscellaneousFunction.generateRandomNumbers,
       get_Dimensions: miscellaneousFunction.get_Dimensions,
       fillWithNumber: miscellaneousFunction.fillWithNumber,

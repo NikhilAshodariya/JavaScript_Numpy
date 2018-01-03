@@ -2,9 +2,15 @@ var nj = require('./NumpyJS.js');
 console.log(nj);
 
 var a = [
-  [3, 5, 2],
-  [2, 4, -2],
-  [7, 1, 1]
+  [47, 10, 84, 64],
+  [33, 19, 98, 25],
 ];
 
-console.log(nj.matrixInverse(a));
+var b = [
+  [93, 85],
+  [66, 91],
+  [95, 77],
+  [84, 30]
+];
+
+console.log(nj.matrixMultiply(a, b));
