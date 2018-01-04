@@ -121,7 +121,7 @@ $ npm test
   [1, -2, -3]
 ]
 
-> var ans = nj.ElementMultiply(a,c);
+> var ans = nj.multiply(a,c);
 > ans
 [
   [1, 2, 3],
@@ -131,7 +131,7 @@ $ npm test
 ]
 ```
 
-**Note** : The function `ElementMultiply` is not a matrix multiply instead it multiplies element by element. The `add` and `subtract` functions provides functionality similar to Numpy of Python
+**Note** : The function `multiply` is not a matrix multiply instead it multiplies element by element. The `add` and `subtract` functions provides functionality similar to Numpy of Python
 
 ### Matrix Multiplication
 ```js

@@ -15,7 +15,7 @@ var NumpyJS = (
     return {
       add: adder.add,
       subtract: subtractor.subtract,
-      ElementMultiply: multiply.ElementMultiply,
+      multiply: multiply.ElementMultiply,
       matrixMultiply: matrixMultiply.matrixMultiply,
       generateRandomNumbers: miscellaneousFunction.generateRandomNumbers,
       get_Dimensions: miscellaneousFunction.get_Dimensions,
