@@ -133,6 +133,42 @@ $ npm test
 
 **Note** : The function `multiply` is not a matrix multiply instead it multiplies element by element. The `add` and `subtract` functions provides functionality similar to Numpy of Python
 
+##### Division
+```js
+
+> var a = [
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
+];
+
+> var b = [
+  [2, 3, 4],
+  [5, 32, 2],
+  [5, 3, 2]
+];
+
+> var ans = nj.divide(a,b);
+ans
+[
+  [1.5, 1.6666666666666667, 0.5],
+  [0.4, 0.125, -1],
+  [1.4, 0.3333333333333333, 0.5]
+]
+
+> var c = [1, 2, 3]
+> ans = nj.divide(a,c);
+ans
+[
+  [3, 2.5, 0.6666666666666666],
+  [2, 2, -0.6666666666666666],
+  [7, 0.5, 0.3333333333333333]
+]
+```
+
+__NOTE__: The `divide` function performs division for any dimension ndArray. 
+
+
 ### Matrix Multiplication
 ```js
 > var a = [

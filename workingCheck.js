@@ -13,4 +13,4 @@ var b = [
   [5, 3, 2]
 ];
 
-console.log(nj.multiply(a,b));
+console.log(nj.divide(a, b));
