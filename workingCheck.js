@@ -9,9 +9,8 @@ var a = [
 ];
 
 var b = [
-  [2, 3, 4],
-  [5, 32, 2],
-  [5, 3, 2]
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
 ];
-
-console.log(nj.add(a,b));
+console.log(nj.multiply(a, b));

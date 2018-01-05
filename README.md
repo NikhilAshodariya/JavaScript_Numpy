@@ -96,46 +96,119 @@ $ npm test
 
 ```javascript
 > var a =  [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-  [5, 2, 1]
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
 ];
 
 > var c = [
-  [1],
-  [2],
-  [3],
-  [4]
+  [2, 3, 4],
+  [5, 32, 2],
+  [5, 3, 2]
 ];
 
 > var ans = nj.add(a,c);
 > ans
-  [
-    [2, 3, 4],
-    [6, 7, 8],
-    [10, 11, 12],
-    [9, 6, 5]
-  ]
-> var ans = nj.subtract(a,c);
 [
-  [0, 1, 2],
-  [2, 3, 4],
-  [4, 5, 6],
-  [1, -2, -3]
-]
-
-> var ans = nj.multiply(a,c);
-> ans
-[
-  [1, 2, 3],
-  [8, 10, 12],
-  [21, 24, 27],
-  [20, 8, 4]
+  [5, 8, 6],
+  [7, 36, 0],
+  [12, 4, 3]
 ]
 ```
 
-**Note** : The function `multiply` is not a matrix multiply instead it multiplies element by element. The `add` and `subtract` functions provides functionality similar to Numpy of Python
+The `add` function provides adds the first row of matrix a i.e. [3, 5, 5] with the corresponding first row of matrix c i.e. [2, 3, 4], second row of matrix a i.e. [2,4,-2] with the corresponding second row of matrix c i.e. [5, 32, 2] and so on.
+
+```javascript
+> var a = [
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
+];
+
+> var b = [
+  [1],
+  [2],
+  [3]
+];
+
+> var ans = nj.add(a,b);
+ans
+[
+  [4, 6, 3],
+  [4, 6, 0],
+  [10, 4, 4]
+]
+```
+
+**NOTE**: In the above example the `add` function adds the first row of matrix b i.e. one(1) to the first row of matrix a. It performs the same operation on rest of the rows i.e. it adds two(2) to the second row of the matrix a and so on.
+
+```javascript
+> var a = [
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
+];
+
+> var b = [1, 2, 3];
+
+> var ans = nj.add(a,b);
+ans
+[
+  [4, 7, 5],
+  [3, 6, 1],
+  [8, 3, 4]
+]
+```
+
+**NOTE**: In the above example the `add` function adds matrix b first row of matrix b i.e. [1, 2, 3] to the first row, second row and third row of matrix a.
+
+```javascript
+> var a = [
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
+];
+
+> var b = [
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
+];
+
+> var ans = nj.subtract(a,b);
+[
+  [1, 1, -4],
+  [-7, -2, -10],
+  [2, -1, -13]
+]
+```
+__NOTE__: The `subtract` function has the same working mechanism like add on ndArray.
+
+```javascript
+> var a = [
+  [3, 5, 2],
+  [2, 4, -2],
+  [7, 1, 1]
+];
+
+> var b = [
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
+];
+
+> var ans = nj.multiply(a,b);
+> ans
+[
+  [6, 20, 12],
+  [18, 24, -16],
+  [35, 2, 14]
+]
+
+```
+
+**Note** : The function `multiply` is not a matrix multiply instead it multiplies element by element an has same working mechanism as `add` function.
+
 
 ### Division
 
@@ -171,7 +244,7 @@ ans
 ]
 ```
 
-**NOTE**: The `divide` function performs division for any dimension ndArray.
+**NOTE**: The `divide` function performs division for any dimension ndArray. It has same working mechanism as `add`, `subtract` and `multiply` functions.
 
 ### Matrix Multiplication
 
