@@ -60,15 +60,19 @@ $ npm test
 **NOTE**: The function get_Dimensions returns the dimension of the given matrix.
 
 ```javascript
-> var totalNumber = 10;
+> var dim = [3,3]
 > var minRange = 3;
 > var maxRange = 25;
-> var ans = nj.generateRandomNumbers(totalNumber,minRange,maxRange);
+> var ans = nj.generateRandomNumbers(dim,minRange,maxRange);
 > ans
-[ 10, 20, 19, 14, 12, 18, 23, 25, 6, 22 ]
+[
+  [22, 10, 20],
+  [5, 8, 11],
+  [10, 8, 22]
+]
 ```
 
-**Note**: The function generateRandomNumbers provides a list of random numbers generated with the minRange and maxRange the default parameter value for minRange is zero and maxRange is totalNumber
+**Note**: The function `generateRandomNumbers` provides a matrix of random numbers depending on the input dimension which is the first parameter of the function the default value for minRange is zero and maxRange is totalNumber. It can also generate an ndArray.
 
 ## Matrix Manipulation
 
@@ -133,8 +137,9 @@ $ npm test
 
 **Note** : The function `multiply` is not a matrix multiply instead it multiplies element by element. The `add` and `subtract` functions provides functionality similar to Numpy of Python
 
-##### Division
-```js
+### Division
+
+```javascript
 
 > var a = [
   [3, 5, 2],
@@ -166,11 +171,11 @@ ans
 ]
 ```
 
-__NOTE__: The `divide` function performs division for any dimension ndArray. 
-
+**NOTE**: The `divide` function performs division for any dimension ndArray.
 
 ### Matrix Multiplication
-```js
+
+```javascript
 > var a = [
   [47, 10, 84, 64],
   [33, 19, 98, 25],
@@ -189,11 +194,11 @@ ans
   [18387, 13293],
   [15733, 12830]
 ]
-
 ```
+
 The `matrixMultiply` function multiplies the given matrix according to the matrix multiplication rules.
 
-```js
+```javascript
 > var a = [
   [
     [83, 41, 41, 27],
@@ -234,7 +239,8 @@ ans
   ]
 ]
 ```
-__NOTE__: The `matrixMultiply` function can multiply ndArray with the given matrix of ndArray if the shape of both the matrix are compatible else it generates an error.
+
+**NOTE**: The `matrixMultiply` function can multiply ndArray with the given matrix of ndArray if the shape of both the matrix are compatible else it generates an error.
 
 ## Logarithm
 
