@@ -1,7 +1,7 @@
 {
   "name": "jsnumpy",
   "version": "1.1.2",
-  "description": "Always all the operation of Numpy in JS",
+  "description": "It provides equivalent of Numpy in JavaScript. All functions works on ndArray also.",
   "main": "NumpyJS.js",
   "dependencies": {
     "matrix_deep_clone": "^1.0.2"
@@ -15,11 +15,13 @@
     "url": "git+https://github.com/NikhilAshodariya/JavaScript_Numpy.git"
   },
   "keywords": [
+    "Numpy equivalent in JavaScript",
+    "Matrix operation in JavaScript"
+    "Numpy like library in JavaScript",
+    "jsNumpy",
+    "NumpyJS",
     "Numpy",
-    "Javascript",
-    "add",
-	"subtract",
-	"multiply"
+	  "Matrix",
   ],
   "author": "Nikhil Ashodriya",
   "license": "ISC",
