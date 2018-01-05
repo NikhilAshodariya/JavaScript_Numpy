@@ -1,5 +1,6 @@
 var nj = require('./NumpyJS.js');
-console.log(nj);
+// console.log(nj);
+
 
 var a = [
   [3, 5, 2],
@@ -13,4 +14,4 @@ var b = [
   [5, 3, 2]
 ];
 
-console.log(nj.divide(a, b));
+console.log(nj.add(a,b));

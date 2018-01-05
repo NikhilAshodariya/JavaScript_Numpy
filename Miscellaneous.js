@@ -3,24 +3,36 @@ var stats = require('./Statistics.js');
 
 var otherFunctions = function() {
 
-  function generateRandomNumbers(totalNumbers, min = 0, max = totalNumbers + min) {
+  function generateRandomNumbers(dim, min = 0, max) {
     /**
      * Both the min and max values are included.
      */
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
-    var arr = [];
-    var counter = -1;
-    while (arr.length < totalNumbers) {
-      var randomnumber = getRandomInt(min, max);
-      if (arr.indexOf(randomnumber) > -1) {
-        continue;
+
+    function innerGenerateRandomNumbers(totalElements) {
+      var newData = [];
+      for (var i = 0; i < totalElements; i++) {
+        newData[i] = getRandomInt(min, max);
       }
-      counter++;
-      arr[counter] = randomnumber;
+      return newData;
     }
-    return arr;
+
+    if (max == undefined) {
+      var sum = 1;
+      for (var i in dim) {
+        sum = dim[i] * sum;
+      }
+      max = sum + min;
+    }
+
+    var totalElements = 1;
+    for (var i = 0; i < dim.length; i++) {
+      totalElements = dim[i] * totalElements;
+    }
+    var newData = innerGenerateRandomNumbers(totalElements);
+    return reshape(newData, dim);
   }
 
   function get_Dimensions(data) {
