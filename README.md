@@ -93,7 +93,7 @@ $ npm test
 **Note** : In `reshape` function the first parameter is the data and the second parameter is the new dimension to which the data needs to be reshaped. The function `flatten` converts the matrix into a single Array.
 
 ## Arithmetic Operation
-
+#### Addition
 ```javascript
 > var a =  [
   [3, 5, 2],
@@ -162,6 +162,7 @@ ans
 
 **NOTE**: In the above example the `add` function adds matrix b first row of matrix b i.e. [1, 2, 3] to the first row, second row and third row of matrix a.
 
+#### Subtraction
 ```javascript
 > var a = [
   [3, 5, 2],
@@ -184,6 +185,7 @@ ans
 ```
 __NOTE__: The `subtract` function has the same working mechanism like add on ndArray.
 
+#### Multiply
 ```javascript
 > var a = [
   [3, 5, 2],
@@ -210,7 +212,7 @@ __NOTE__: The `subtract` function has the same working mechanism like add on ndA
 **Note** : The function `multiply` is not a matrix multiply instead it multiplies element by element an has same working mechanism as `add` function.
 
 
-### Division
+#### Division
 
 ```javascript
 
