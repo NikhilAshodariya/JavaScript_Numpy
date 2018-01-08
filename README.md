@@ -93,7 +93,9 @@ $ npm test
 **Note** : In `reshape` function the first parameter is the data and the second parameter is the new dimension to which the data needs to be reshaped. The function `flatten` converts the matrix into a single Array.
 
 ## Arithmetic Operation
-#### Addition
+
+### Addition
+
 ```javascript
 > var a =  [
   [3, 5, 2],
@@ -162,7 +164,8 @@ ans
 
 **NOTE**: In the above example the `add` function adds matrix b first row of matrix b i.e. [1, 2, 3] to the first row, second row and third row of matrix a.
 
-#### Subtraction
+### Subtraction
+
 ```javascript
 > var a = [
   [3, 5, 2],
@@ -183,9 +186,11 @@ ans
   [2, -1, -13]
 ]
 ```
-__NOTE__: The `subtract` function has the same working mechanism like add on ndArray.
 
-#### Multiply
+**NOTE**: The `subtract` function has the same working mechanism like add on ndArray.
+
+### Multiply
+
 ```javascript
 > var a = [
   [3, 5, 2],
@@ -206,13 +211,11 @@ __NOTE__: The `subtract` function has the same working mechanism like add on ndA
   [18, 24, -16],
   [35, 2, 14]
 ]
-
 ```
 
 **Note** : The function `multiply` is not a matrix multiply instead it multiplies element by element an has same working mechanism as `add` function.
 
-
-#### Division
+### Division
 
 ```javascript
 
@@ -248,7 +251,7 @@ ans
 
 **NOTE**: The `divide` function performs division for any dimension ndArray. It has same working mechanism as `add`, `subtract` and `multiply` functions.
 
-### Matrix Multiplication
+## Matrix Multiplication
 
 ```javascript
 > var a = [
@@ -525,6 +528,68 @@ The `mean` function calculates the mean of the matrix provided.
 ```
 
 **NOTE**: `square` function calculates the square of each element of the given matrix.
+
+```javascript
+> var b = [
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
+];
+
+> var ans = nj.squareRoot(b);
+ans
+[
+  [1.4142135623730951, 2, 2.449489742783178],
+  [3, 2.449489742783178, 2.8284271247461903],
+  [2.23606797749979, 1.4142135623730951, 3.7416573867739413]
+]
+
+> ans = nj.cubeRoot(b);
+[
+  [1.2599210498948732, 1.5874010519681994, 1.8171205928321397],
+  [2.080083823051904, 1.8171205928321397, 2],
+  [1.7099759466766968, 1.2599210498948732, 2.4101422641752297]
+]
+```
+
+The `squareRoot`, `cubeRoot` function calculates the squareRoot and cubeRoot of the given ndArray respectively.
+
+```javascript
+> var b = [
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
+];
+
+> var ans = nj.nThRoot(b,5);
+ans
+[
+  [1.148698354997035, 1.3195079107728942, 1.4309690811052556],
+  [1.5518455739153596, 1.4309690811052556, 1.5157165665103982],
+  [1.379729661461215, 1.148698354997035, 1.6952182030724354]
+]
+```
+
+**NOTE**: The `nThRoot` function calculates the nth root of the data. The first parameter of `nThRoot` function is the data and the second parameter is the value whose nth root is required. `nj.nThRoot(b,5)` is not equal to `nj.nThRoot(5,b)`.
+
+```javascript
+> var b = [
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
+];
+
+> var ans = nj.nThRoot(5, b);
+ans
+[
+  [2.23606797749979, 1.4953487812212205, 1.3076604860118306],
+  [1.195813174500402, 1.3076604860118306, 1.2228445449938519],
+  [1.379729661461215, 2.23606797749979, 1.1218283962540023]
+]
+```
+
+**NOTE**: The first row of the ans is [five raise to 1/2, five raise to 1/4, five raise to 1/6]. The second row of the ans is [five raise to 1/9, five raise to 1/6, five raise to 1/8]. The rest of the rows are calculated in similar way.
+
 
 ```javascript
 > ans = nj.sum(a);

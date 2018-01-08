@@ -1,6 +1,4 @@
 var nj = require('./NumpyJS.js');
-// console.log(nj);
-
 
 var a = [
   [3, 5, 2],
@@ -13,4 +11,5 @@ var b = [
   [9, 6, 8],
   [5, 2, 14]
 ];
-console.log(nj.multiply(a, b));
+
+console.log(nj.nThRoot(5, b));

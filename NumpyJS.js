@@ -10,6 +10,7 @@ var exp = require('./exp.js');
 var trigoFunctions = require('./TrignometricFunctions.js');
 var complexMatrixOperations = require('./ComplexMatrixOperation.js');
 var logarithm = require('./Log.js');
+var root = require('./root.js');
 
 var NumpyJS = (
   function() {
@@ -58,7 +59,10 @@ var NumpyJS = (
       matrixInverse: complexMatrixOperations.matrixInverse,
       log10: logarithm.log10,
       logE: logarithm.logE,
-      log: logarithm.log
+      log: logarithm.log,
+      squareRoot: root.squareRoot,
+      nThRoot: root.nThRoot,
+      cubeRoot: root.cubeRoot
     }
   }
 );
