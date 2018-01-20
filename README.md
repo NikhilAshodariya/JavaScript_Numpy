@@ -609,33 +609,33 @@ The `sum` function returns the sum of all the elements of the matrix.
 The `totalElements` function returns the total number of elements in the given Matrix.
 
 ```javascript
-> ans = nj.findHighestElement(a);
+> ans = nj.highestElement(a);
 > ans
 9
 ```
 
-The `findHighestElement` function returns the highest value of the matrix provided.
+The `highestElement` function returns the highest value of the matrix provided.
 
 ```javascript
-> ans = nj.findLowestElement(a);
+> ans = nj.lowestElement(a);
 > ans
 1
 
-> ans = nj.findRange(a);
+> ans = nj.range(a);
 > ans
 8
 
 > var d = [1,2,3,4,5,6,7,8];
-> ans = nj.findMedian(d);
+> ans = nj.median(d);
 > ans
 4.5
 
-> ans = nj.findFrequency(a,1);
+> ans = nj.frequency(a,1);
 > ans
 2
 ```
 
-**Note**: In findFrequency the first parameter is the data and the second parameter is the data whose frequency is required.
+**Note**: In frequency the first parameter is the data and the second parameter is the data whose frequency is required.
 
 ```javascript
 > var a = [
@@ -645,7 +645,7 @@ The `findHighestElement` function returns the highest value of the matrix provid
   [5, 2, 1]
 ];
 
-> var ans = nj.findAllFrequency(a);
+> var ans = nj.allFrequency(a);
 > ans
 {
   '1': 2,
@@ -658,16 +658,16 @@ The `findHighestElement` function returns the highest value of the matrix provid
   '8': 1,
   '9': 1
 }
-> ans = nj.findPopulationStandardDeviation(a);
+> ans = nj.populationStandardDeviation(a);
 > ans
 2.5967394084804805
 
-> ans = nj.findPopulationVariance(a);
+> ans = nj.populationVariance(a);
 > ans
 6.743055555555555
 ```
 
-**Note**: nj.findSampleVariance, nj.findSampleStandardDeviation is also available
+**Note**: nj.sampleVariance, nj.sampleStandardDeviation is also available
 
 ```javascript
 > var a = [
@@ -677,11 +677,11 @@ The `findHighestElement` function returns the highest value of the matrix provid
   [5, 2, 1]
 ];
 
-> var ans = nj.findMode(a);
+> var ans = nj.mode(a);
 > ans
 [1,2,5]
 
-> ans = nj.findMode([1,2,3,4,5]);
+> ans = nj.mode([1,2,3,4,5]);
 > ans
 undefined
 
@@ -769,12 +769,12 @@ ans
   [54, 50, 26],
   [17, 83, 91]
 ];
-> var ans = nj.findDeterminant(a);
+> var ans = nj.determinant(a);
 > ans
 4304
 ```
 
-**NOTE**: The `findDeterminant` function finds the Determinant of the given Matrix.
+**NOTE**: The `determinant` function finds the Determinant of the given Matrix.
 
 ```javascript
 
@@ -786,12 +786,12 @@ ans
   [83, 6, 87, 60, 35]
 ];
 
-> var ans = nj.findDeterminant(b);
+> var ans = nj.determinant(b);
 > ans
 -979886677
 ```
 
-**NOTE**: The `findDeterminant` function works for N*N dimension matrix.
+**NOTE**: The `determinant` function works for N*N dimension matrix.
 
 ```javascript
 > var a = [
@@ -810,7 +810,7 @@ ans
     [31, 6]
   ]
 ];
-> var ans = nj.findDeterminant(a);
+> var ans = nj.determinant(a);
 > ans
 [ -1824, -2924, -2520 ]
 ```
@@ -853,7 +853,7 @@ ans
   ]
 ];
 
-> var ans = nj.findDeterminant(a);
+> var ans = nj.determinant(a);
 > ans
 [
   [3463, -1054, 691],
@@ -861,7 +861,7 @@ ans
 ]
 ```
 
-**NOTE** : `findDeterminant` function retains the shape of Matrix since the matrix's outer shape was of (2,3) so the ans of `findDeterminant` is also (2,3).
+**NOTE** : `determinant` function retains the shape of Matrix since the matrix's outer shape was of (2,3) so the ans of `determinant` is also (2,3).
 
 #### Generating Identity Matrix
 
