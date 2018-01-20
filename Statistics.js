@@ -1,5 +1,8 @@
 var clone = require('matrix_deep_clone');
 var nj = require('./Subtraction');
+var Miscellaneous = require("./Miscellaneous.js");
+var AxisMean = require("./MeanAlongAxis.js");
+
 var stats =
   function() {
     function isPrimitive(test) {
@@ -79,10 +82,14 @@ var stats =
       }
     }
 
-    function findMean(data) {
-      var sum = findSum(data);
-      var totalElements = findTotalElements(data);
-      return sum / totalElements;
+    function findMean(data, axis) {
+      if (axis == undefined || axis == null) {
+        var sum = findSum(data);
+        var totalElements = findTotalElements(data);
+        return sum / totalElements;
+      } else {
+        return AxisMean.meanAlongAxis(data, axis);
+      }
     }
 
     function findSum(data) {
@@ -98,16 +105,21 @@ var stats =
     }
 
     function findMedian(data) {
-      var newdata = data.slice();
-      newdata = newdata.sort();
-      if (newdata.length % 2 == 0) {
-        // even number
-        var num = Number(data.length / 2);
-        return (newdata[num] + newdata[num - 1]) / 2;
-      } else {
-        // odd number
-        return newdata[Math.floor(Number(data.length / 2))];
-      }
+      var Miscellaneous = require("./Miscellaneous.js");
+      var newdata = Miscellaneous.flatten(data);
+      newdata = newdata.slice();
+      // newdata = newdata.sort();
+      values = newdata;
+      values.sort(function(a, b) {
+        return a - b;
+      });
+
+      var half = Math.floor(values.length / 2);
+
+      if (values.length % 2)
+        return values[half];
+      else
+        return (values[half - 1] + values[half]) / 2.0;
     }
 
     function findFrequency(data, tofind) {

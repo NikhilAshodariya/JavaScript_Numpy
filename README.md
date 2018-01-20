@@ -34,6 +34,7 @@ $ npm test
 
 ```javascript
 > var nj = require('jsnumpy');
+
 > var a = nj.fillWithNumber([2,3,4],5);
 > a
 [
@@ -516,6 +517,29 @@ ans
 ```
 
 The `mean` function calculates the mean of the matrix provided.
+
+```js
+> var b = [
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
+];
+> var ans = nj.mean(b,0);
+> ans
+[5.333333333333333, 4, 9.333333333333334]
+```
+__NOTE__: `mean` function takes two parameter the first one is the data and the second parameter is the axis along which we want to find the mean. If value of the axis is not passed then mean of the entire matrix is found.
+
+```js
+> var b = [
+  [2, 4, 6],
+  [9, 6, 8],
+  [5, 2, 14]
+];
+> var ans = nj.mean(b, 1);
+> ans
+[ 4, 7.666666666666667, 7 ]
+```
 
 ```javascript
 > ans = nj.square(a);
