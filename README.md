@@ -76,6 +76,61 @@ $ npm test
 
 **Note**: The function `generateRandomNumbers` provides a matrix of random numbers depending on the input dimension which is the first parameter of the function the default value for minRange is zero and maxRange is totalNumber. It can also generate an ndArray.
 
+## Numerical Range
+
+### linspace
+
+```javascript
+nj.linspace(start, stop, noOfSample);
+```
+
+**NOTE** : The default value of noOfSample is ten. If the value of start or stop is not provided then it gives an error.
+
+```javascript
+> var a = nj.linspace(2, 3);
+[ 2, 2.111111111111111, 2.2222222222222223, 2.3333333333333335, 2.4444444444444446, 2.555555555555556, 2.666666666666667, 2.777777777777778, 2.8888888888888893, 3.0000000000000004]
+```
+
+**NOTE** : In the above example since value of noOfSample is not provided so it is taken as ten.
+
+```javascript
+> var a = nj.linspace(6, 7, 4);
+[ 6, 6.333333333333333, 6.666666666666666, 7 ];
+```
+**NOTE** : In the above example the value of noOfSample is four so `nj.linspace` gives four samples which are equally spaced between start and end value.
+
+### arange
+
+```javascript
+nj.arange(start, stop, step = 1);
+```
+
+**NOTE** : The default value of step is one.
+
+```javascript
+> var a = nj.arange(4);
+> a
+[ 0, 1, 2, 3, 4 ]
+```
+
+**NOTE** : When only one parameter is passed then it is taken as last value of the array and the start value is then as zero and step is taken as one.
+
+```javascript
+> var a = nj.arange(2,5);
+> a
+[ 2, 3, 4, 5 ]
+```
+
+**NOTE** : In the above example the start is two and end is five and the default value of step is one. Since step is not provided therefore it's default value is taken.
+
+```javascript
+> var a = nj.arange(4,9,2);
+> a
+[ 4, 6, 8 ]
+```
+
+**NOTE** : In the above example the start is four and the end is nine and step is two.
+
 ## Matrix Manipulation
 
 ```javascript
@@ -518,7 +573,7 @@ ans
 
 The `mean` function calculates the mean of the matrix provided.
 
-```js
+```javascript
 > var b = [
   [2, 4, 6],
   [9, 6, 8],
@@ -528,9 +583,10 @@ The `mean` function calculates the mean of the matrix provided.
 > ans
 [5.333333333333333, 4, 9.333333333333334]
 ```
-__NOTE__: `mean` function takes two parameter the first one is the data and the second parameter is the axis along which we want to find the mean. If value of the axis is not passed then mean of the entire matrix is found.
 
-```js
+**NOTE**: `mean` function takes two parameter the first one is the data and the second parameter is the axis along which we want to find the mean. If value of the axis is not passed then mean of the entire matrix is found.
+
+```javascript
 > var b = [
   [2, 4, 6],
   [9, 6, 8],
@@ -614,7 +670,6 @@ ans
 ```
 
 **NOTE**: The first row of the ans is [five raise to 1/2, five raise to 1/4, five raise to 1/6]. The second row of the ans is [five raise to 1/9, five raise to 1/6, five raise to 1/8]. The rest of the rows are calculated in similar way.
-
 
 ```javascript
 > ans = nj.sum(a);
