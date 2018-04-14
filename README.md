@@ -76,6 +76,18 @@ $ npm test
 
 **Note**: The function `generateRandomNumbers` provides a matrix of random numbers depending on the input dimension which is the first parameter of the function the default value for minRange is zero and maxRange is totalNumber. It can also generate an ndArray.
 
+### Deep cloning an array
+
+```javascript
+> var a = [[1,2,3],[4,5,6],[7,8,9]];
+> var co = nj.copy(a);
+> co
+[[1,2,3],[4,5,6],[7,8,9]]
+
+> console.log(co===a);
+false
+```
+
 ## Numerical Range
 
 ### linspace
@@ -97,6 +109,7 @@ nj.linspace(start, stop, noOfSample);
 > var a = nj.linspace(6, 7, 4);
 [ 6, 6.333333333333333, 6.666666666666666, 7 ];
 ```
+
 **NOTE** : In the above example the value of noOfSample is four so `nj.linspace` gives four samples which are equally spaced between start and end value.
 
 ### arange
