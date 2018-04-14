@@ -3,6 +3,10 @@ var stats = require('./Statistics.js');
 
 var otherFunctions = function() {
 
+  function copy(data) {
+    return clone.deepCloneMatrix(data);
+  }
+
   function generateRandomNumbers(dim, min = 0, max) {
     /**
      * Both the min and max values are included.
@@ -90,7 +94,7 @@ var otherFunctions = function() {
         var temp = [];
         for (var j = 0; j < subset[subset.length - 1 - i]; j++) {
           if (i == 0) {
-            temp[j] = create2DMatrix(rowsNumber, colNumber,number)
+            temp[j] = create2DMatrix(rowsNumber, colNumber, number)
           }
         }
         if (i == 0) {
@@ -242,7 +246,8 @@ var otherFunctions = function() {
     flatten: flatten,
     reshape: reshape,
     negative: negative,
-    abs: abs
+    abs: abs,
+    copy: copy
   }
 }
 module.exports = otherFunctions();

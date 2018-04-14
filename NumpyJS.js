@@ -28,6 +28,7 @@ var NumpyJS = (
       reshape: miscellaneousFunction.reshape,
       negative: miscellaneousFunction.negative,
       abs: miscellaneousFunction.abs,
+      copy: miscellaneousFunction.copy,
       mean: stats.mean,
       square: stats.square,
       sum: stats.sum,
